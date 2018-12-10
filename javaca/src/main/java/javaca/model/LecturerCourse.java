@@ -48,16 +48,16 @@ public class LecturerCourse implements Serializable {
 		this.status = status;
 	}
 
-	public Course getCourse() {
-		return this.course;
+	public String getCourse() {
+		return this.course.getCourseID();
 	}
 
 	public void setCourse(Course course) {
 		this.course = course;
 	}
 
-	public User getUser() {
-		return this.user;
+	public int getUser() {
+		return this.user.getUserID();
 	}
 
 	public void setUser(User user) {
