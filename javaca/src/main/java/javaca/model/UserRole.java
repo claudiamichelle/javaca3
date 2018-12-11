@@ -18,7 +18,7 @@ public class UserRole implements Serializable {
 	@Id
 	private int roleID;
 
-	private String userType;
+	private String usertype;
 
 	//bi-directional many-to-one association to Login
 	@OneToMany(mappedBy="userrole")
@@ -40,11 +40,11 @@ public class UserRole implements Serializable {
 	}
 
 	public String getUserType() {
-		return this.userType;
+		return this.usertype;
 	}
 
 	public void setUserType(String userType) {
-		this.userType = userType;
+		this.usertype = userType;
 	}
 
 	public List<Login> getLogins() {

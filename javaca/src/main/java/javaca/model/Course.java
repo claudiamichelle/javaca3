@@ -22,12 +22,12 @@ public class Course implements Serializable {
 	private int capacity;
 
 	@Temporal(TemporalType.DATE)
-	private Date endDate;
+	private Date enddate;
 
 	private int modularCredit;
 
 	@Temporal(TemporalType.DATE)
-	private Date startDate;
+	private Date startdate;
 
 	private String status;
 
@@ -61,11 +61,11 @@ public class Course implements Serializable {
 	}
 
 	public Date getEndDate() {
-		return this.endDate;
+		return this.enddate;
 	}
 
 	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+		this.enddate = endDate;
 	}
 
 	public int getModularCredit() {
@@ -77,11 +77,11 @@ public class Course implements Serializable {
 	}
 
 	public Date getStartDate() {
-		return this.startDate;
+		return this.startdate;
 	}
 
 	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+		this.startdate = startDate;
 	}
 
 	public String getStatus() {
