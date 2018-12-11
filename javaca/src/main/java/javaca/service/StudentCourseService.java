@@ -8,4 +8,11 @@ public interface StudentCourseService {
 
 	List<StudentCourse> findAll();
 
+	List<StudentCourse> findSdtUnderSameCourse(String cid);
+
+	List<StudentCourse> findSdtUnderSameCourse(int uid);
+
+	List<StudentCourse> showCourseEnrollment(String cid);
+
+
 }
