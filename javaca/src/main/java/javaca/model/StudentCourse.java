@@ -19,7 +19,7 @@ public class StudentCourse implements Serializable {
 	private int enrollmentID;
 
 	@Temporal(TemporalType.DATE)
-	private Date enrollmentDate;
+	private Date enrollmentdate;
 
 	private String grade;
 
@@ -47,11 +47,11 @@ public class StudentCourse implements Serializable {
 	}
 
 	public Date getEnrollmentDate() {
-		return this.enrollmentDate;
+		return this.enrollmentdate;
 	}
 
 	public void setEnrollmentDate(Date enrollmentDate) {
-		this.enrollmentDate = enrollmentDate;
+		this.enrollmentdate = enrollmentDate;
 	}
 
 	public String getGrade() {

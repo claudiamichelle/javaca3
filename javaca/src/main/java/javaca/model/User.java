@@ -24,9 +24,9 @@ public class User implements Serializable {
 
 	private String email;
 
-	private String firstName;
+	private String firstname;
 
-	private String lastName;
+	private String lastname;
 
 	private String status;
 
@@ -83,19 +83,19 @@ public class User implements Serializable {
 	}
 
 	public String getFirstName() {
-		return this.firstName;
+		return this.firstname;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstname = firstName;
 	}
 
 	public String getLastName() {
-		return this.lastName;
+		return this.lastname;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastname = lastName;
 	}
 
 	public String getStatus() {
@@ -114,18 +114,18 @@ public class User implements Serializable {
 		this.lecturercourses = lecturercourses;
 	}
 
-	public LecturerCourse addLecturercours(LecturerCourse lecturercours) {
-		getLecturercourses().add(lecturercours);
-		lecturercours.setUser(this);
+	public LecturerCourse addLecturercours(LecturerCourse lecturercourse) {
+		getLecturercourses().add(lecturercourse);
+		lecturercourse.setUser(this);
 
-		return lecturercours;
+		return lecturercourse;
 	}
 
-	public LecturerCourse removeLecturercours(LecturerCourse lecturercours) {
-		getLecturercourses().remove(lecturercours);
-		lecturercours.setUser(null);
+	public LecturerCourse removeLecturercours(LecturerCourse lecturercourse) {
+		getLecturercourses().remove(lecturercourse);
+		lecturercourse.setUser(null);
 
-		return lecturercours;
+		return lecturercourse;
 	}
 
 	public Login getLogin() {
@@ -144,18 +144,18 @@ public class User implements Serializable {
 		this.studentcourses = studentcourses;
 	}
 
-	public StudentCourse addStudentcours(StudentCourse studentcours) {
-		getStudentcourses().add(studentcours);
-		studentcours.setUser(this);
+	public StudentCourse addStudentcours(StudentCourse studentcourse) {
+		getStudentcourses().add(studentcourse);
+		studentcourse.setUser(this);
 
-		return studentcours;
+		return studentcourse;
 	}
 
-	public StudentCourse removeStudentcours(StudentCourse studentcours) {
-		getStudentcourses().remove(studentcours);
-		studentcours.setUser(null);
+	public StudentCourse removeStudentcours(StudentCourse studentcourse) {
+		getStudentcourses().remove(studentcourse);
+		studentcourse.setUser(null);
 
-		return studentcours;
+		return studentcourse;
 	}
 
 	public UserRole getUserrole() {

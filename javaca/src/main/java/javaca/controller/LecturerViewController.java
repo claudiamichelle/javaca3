@@ -24,4 +24,9 @@ public class LecturerViewController {
 		mav.addObject("list", list);
 		return mav;
 	}
+	
+	/*@RequestMapping(value = "/LecturerViewstudent", method = RequestMethod.GET)
+	public ModelAndView getStdPerformance() {
+		ModelAndView modelAndView = new ModelAndView("LecturerViewStudent");
+	}*/
 }
