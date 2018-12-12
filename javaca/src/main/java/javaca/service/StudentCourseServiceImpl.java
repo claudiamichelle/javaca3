@@ -20,5 +20,24 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	public List<StudentCourse> findAll() {
 		return studentCourseRepository.findAll();
 	}
+	
+	@Override
+	@Transactional
+	public List<StudentCourse> findAllForCurrentStudent(String userid){
+		return studentCourseRepository.findAllForCurrentStudent(userid);	
+	}
+	
+//	@Override
+//	@Transactional
+//	public void Enroll(String userid, int courseid){
+//		return studentCourseRepository.Enroll(userid, courseid);	
+//	}
+//	service method for Enroll not needed because Repository method for Enroll does not exist, Enroll logic is done in Controller (no insert statement in JPQL)
+	
+	@Override
+	@Transactional
+	public void Drop(String userid, int courseid){
+		studentCourseRepository.Drop(userid, courseid);	
+	}
 
 }

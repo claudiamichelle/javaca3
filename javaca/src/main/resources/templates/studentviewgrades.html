@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Grades and GPA</title>
+	<link rel="stylesheet" th:href="@{/css/custom.css}"/>
+	<link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+
+<body>
+
+<h1 align="center">View Grades and GPA</h1>
+
+<table id="t02">
+<tr>
+<th>
+<h2>View your horrible grades. Might want to have a way to show the student's name and userid. must also get the GPA from the query.</h2>
+</th>
+</tr>
+</table>
+ 
+   
+<form:form>
+
+<table id="ViewGradesTable" border="2" width="70%">
+
+<tr>
+<th>EnrollmentId</th><th>CourseID</th><th>CourseTitle</th><th>EnrollmentDate</th><th>Status</th>
+<th>Grade</th>
+</tr>  
+   
+<tr th:each="studentcoursetaken : ${studentcourselist}"> 
+   <td th:text="${studentcoursetaken.enrollmentid}"></td>  
+   <td th:text="${studentcoursetaken.courseid}"></td> 
+   <td th:text="${studentcoursetaken.coursetitle}"></td>
+   <td th:text="${studentcoursetaken.enrollmentdate}"></td>
+   <td th:text="${studentcoursetaken.status}"></td> 
+   <td th:text="${studentcoursetaken.grade}"></td>  
+</tr>  
+
+</table>  
+
+</form:form></body></html>
