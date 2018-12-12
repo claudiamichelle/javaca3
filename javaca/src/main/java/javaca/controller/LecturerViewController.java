@@ -25,7 +25,7 @@ public class LecturerViewController {
 	@RequestMapping(value = "/lecturer-course", method = RequestMethod.GET)
 	public ModelAndView getAll() {
 
-		List<LecturerCourse> list = lservice.findAll();
+		List<LecturerCourse> list = lservice.getActiveCourses();
 		ModelAndView mav = new ModelAndView("lecturer-course");
 		mav.addObject("list", list);
 		return mav;

@@ -21,4 +21,10 @@ public class LecturerCourseServiceImpl implements LecturerCourseService {
 		return lecturerCourseRepository.findAll();
 	}
 
+	@Override
+	@Transactional
+	public List<LecturerCourse> getActiveCourses() {
+		return lecturerCourseRepository.getActiveCourses();
+	}
+
 }

@@ -28,7 +28,7 @@ public class Login implements Serializable {
 
 	//bi-directional one-to-one association to User
 	@OneToOne
-	@JoinColumn(name="LoginID")
+	@JoinColumn(name="Email")
 	private User user;
 
 	public Login() {

@@ -14,5 +14,8 @@ public interface StudentCourseService {
 
 	List<StudentCourse> showCourseEnrollment(String cid);
 
+	StudentCourse findOne(int eid);
+	
+	StudentCourse saveGrade(StudentCourse sc);
 
 }

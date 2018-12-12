@@ -27,13 +27,15 @@
 				<th>Student ID</th>
 				<th>Grade </th>
 				<th></th>
+				<th></th>
 			</tr>
 
 
 			<tr th:each="sc : ${list}">
 				<td th:text="${sc.course}"></td>
 				<td th:text="${sc.user}"></td>
-				<td th:text="${sc.grade}"></td>		
+				<td th:text="${sc.grade}"></td>	
+				<td><a th:href="@{'/grade-student/' + ${sc.enrollmentID}}">Grade Student</a></td>	
 				<td><a th:href="@{'/LecViewStudent/' + ${sc.user}}">CGPA</a></td>  
 				
 				  				  

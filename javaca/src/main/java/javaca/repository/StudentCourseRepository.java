@@ -20,4 +20,7 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse, In
 	@Query("SELECT s FROM StudentCourse s WHERE s.course.courseID = :cid")
 	List<StudentCourse> showCourseEnrollment(@Param("cid") String cid);
 
+	@Query("SELECT s FROM StudentCourse s WHERE s.enrollmentID = :eid")
+	StudentCourse findStudentCourseByEnrollmentId(@Param("eid") int eid);
+
 }
