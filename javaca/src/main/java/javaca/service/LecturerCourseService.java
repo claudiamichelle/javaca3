@@ -7,5 +7,6 @@ import javaca.model.LecturerCourse;
 public interface LecturerCourseService {
 
 	List<LecturerCourse> findAll();
+	List<LecturerCourse> getActiveCourses();
 
 }

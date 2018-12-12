@@ -40,5 +40,17 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		return studentCourseRepository.showCourseEnrollment(cid);
 	}
 	
+	@Override
+	@Transactional
+	public StudentCourse findOne(int eid) {
+		return studentCourseRepository.findStudentCourseByEnrollmentId(eid);
+	}
+
+	@Override
+	@Transactional
+	public StudentCourse saveGrade(StudentCourse sc) {
+		return studentCourseRepository.save(sc);
+	}
+	
 
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Student Enrollment Form</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+
+</head>
+<body>
+
+<h1> Grade Student</h1>
+<form action = "/grade-student" th:action="@{/savegrade}" th:object="${studentcourse}" method="post">
+<input type ="hidden" th:field="*{enrollmentID}"/>
+
+<label for="enrollmentID">Enrollment ID :</label>
+<label th:text="*{enrollmentID}"></label>
+<br/>
+<label for="user">Course ID :</label>
+<label th:text="*{course}"></label>
+<br/>
+<label for="user">User ID :</label>
+<label th:text="*{user}"></label>
+<br/>
+<label for="grade">Select Grade :</label>
+<select th:field="*{grade}">
+<option th:value="'*{grade}'" ></option>
+<option th:value="'A+'">A+</option>
+<option th:value="'A'">A</option>
+<option th:value="'A-'">A-</option>
+<option th:value="'B+'" >B+</option>
+<option th:value="'B'" >B</option>
+<option th:value="'B-'" >B-</option>
+<option th:value="'C+'">C+</option>
+<option th:value="'C'">C</option>
+<option th:value="'D+'">D+</option>
+<option th:value="'D'">D</option>
+<option th:value="'F'">F</option>
+</select>
+<br/>
+<input type ="submit"/>
+
+</form>
+</body>
+</html>
