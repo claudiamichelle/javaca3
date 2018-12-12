@@ -18,4 +18,11 @@ public interface StudentCourseService {
 	
 	StudentCourse saveGrade(StudentCourse sc);
 
+	List<StudentCourse> showStudentGrades(int uid);
+
+	double calculateCGPA(int uid);
+
+	List<String> listStudentGrades(int uid);
+
+
 }

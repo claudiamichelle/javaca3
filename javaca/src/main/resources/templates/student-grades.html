@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Courses Taught</title>
+	<title>Lecturer Course</title>
 	<link rel="stylesheet" th:href="@{/css/custom.css}" />
 	<link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 
 <body>
-	<h1 align="center">Courses Taught</h1>
+	<h1 align="center">View Your Grades</h1>
 	<table id="t02" cellpadding="2">
 		<tr>
 			<th><a href=""><h2>link to somewhere...</h2></a></th>
@@ -15,36 +15,28 @@
 			<th><a align="right" href="/delete"><h2>link to another place...</h2></a></th>
 		</tr>
 	</table>
-	<table>
 
-
-	</table>
+<label for="CGPA">CGPA :</label>
+<label th:text="${cgpa}"></label>
 
 	<form:form>
 		<table id="t01" border="2" width="70%" cellpadding="2">
 			<tr>
-				<th>Teaching ID</th>
-				<th>Course Title</th>
 				<th>Course ID</th>
-				<th>Credit</th>
 				<th>Status</th>
-				<th>Current Enrollment</th>
-				<th></th>
+				<th>Grade</th>
 			</tr>
 
 
-			<tr th:each="lecturercourse : ${list}">
-				<td th:text="${lecturercourse.teachingID}"></td>
-				<td th:text="${lecturercourse.title}"></td>
-				<td th:text="${lecturercourse.courseID}"></td>		
-				<td th:text="${lecturercourse.credit}"></td>
-				<td th:text="${lecturercourse.status}"></td>		
-				<td th:text="${lecturercourse.currentenrollment}"></td>		  
+			<tr th:each="studentcourse : ${list}">
+				<td th:text="${studentcourse.course}"></td>
+				<td th:text="${studentcourse.status}"></td>		
+				<td th:text="${studentcourse.grade}"></td>	
+				  
 			</tr>
 
 		</table>
 		<br />
-
 
 	</form:form>
 </body>

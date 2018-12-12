@@ -22,5 +22,8 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse, In
 
 	@Query("SELECT s FROM StudentCourse s WHERE s.enrollmentID = :eid")
 	StudentCourse findStudentCourseByEnrollmentId(@Param("eid") int eid);
+	
+	@Query("SELECT s.grade FROM StudentCourse s WHERE s.user.userID = :uid")
+	List<String> listStudentGrades(@Param("uid") int uid);
 
 }
