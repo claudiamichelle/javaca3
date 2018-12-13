@@ -7,16 +7,11 @@
    Student
    </a>
    |
-   <th:block sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_LECTURER')">
-      <a th:href="@{/admin/orderList}">
-      Lecturer
-      </a>
-      |
-   </th:block>
-   <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-      <a th:href="@{/admin/product}">
+   <a th:href="@{/lecturerView}">
+   Lecturer
+   </a>
+   |   
+   <a th:href="@{/_admin}">
       Admin
-      </a>
-      |
-   </th:block>
+    </a>   
 </div>

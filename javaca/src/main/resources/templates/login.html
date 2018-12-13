@@ -24,7 +24,7 @@
          </th:block> 
 -->
           
-         <form method="POST" th:action="/authenticate" th:object="${login}">
+         <form method="POST" th:action="@{/authenticate}" th:object="${login}">
             <table>
                <tr>
                   <td>User Name *</td>
@@ -43,7 +43,7 @@
                </tr>
             </table>
          </form>
-          
+          <!-- th:action="${/authenticate}" -->
          <span class="error-message" th:utext="${error}"></span>
       </div>
        

@@ -1,11 +1,8 @@
 package javaca.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.*;
-
-import org.springframework.security.core.GrantedAuthority;
 
 
 /**

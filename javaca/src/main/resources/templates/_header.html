@@ -1,19 +1,17 @@
 <div class="header-container"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:th="http://www.thymeleaf.org">
  
    <div class="site-name">Java CAPS Project</div>
    
    <div class="header-bar">
-      <th:block sec:authorize="isAuthenticated()">
+      <th:block >
          Course Application Processing System
-         <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
          &nbsp;|&nbsp;
-         <a th:href="@{/admin/logout}">Logout</a>
+         <a th:href="@{/}">Logout</a>
       </th:block>
        
-      <th:block sec:authorize="!isAuthenticated()">
-         <a th:href="@{/admin/login}">Login</a>
+      <th:block>
+         <a th:href="@{/login}">Login</a>
       </th:block>
    </div>
    
