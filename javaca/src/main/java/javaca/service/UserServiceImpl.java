@@ -16,9 +16,6 @@ public class UserServiceImpl implements UserService {
 	@Resource
 	UserRepository userRepository;
 
-	@Resource
-	LoginRepository loginRepository;
-
 	@Override
 	@Transactional
 	public List<User> showallstudent() {
@@ -51,4 +48,9 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	@Transactional
+	public List<User> showalllectures() {
+		return userRepository.showalllectures();
 }
