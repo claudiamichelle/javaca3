@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Product</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+   </head>
+   <body>
+    
+      <th:block th:include="/_header"></th:block>
+      <th:block th:include="/_menu"></th:block>
+       
+      <div class="page-title">Product</div>
+      <div th:if="${errorMessage!= null}" class="error-message" th:utext="${errorMessage}">
+      </div>
+       
+     <h1> this is Lecturer View</h1>
+       
+      <th:block th:include="/_footer"></th:block>
+       
+   </body>
+</html>

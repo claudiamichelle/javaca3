@@ -1,7 +1,11 @@
 package javaca.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.springframework.security.core.GrantedAuthority;
 
 
 /**
@@ -13,13 +17,13 @@ import javax.persistence.*;
 @NamedQuery(name="Login.findAll", query="SELECT l FROM Login l")
 public class Login implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	private String loginID;
 
 	private String password;
 
-	private String status;
+	private boolean status;
 
 	//bi-directional many-to-one association to UserRole
 	@ManyToOne
@@ -28,11 +32,8 @@ public class Login implements Serializable {
 
 	//bi-directional one-to-one association to User
 	@OneToOne
-	@JoinColumn(name="LoginID")
+	@JoinColumn(name="Email")
 	private User user;
-
-	public Login() {
-	}
 
 	public String getLoginID() {
 		return this.loginID;
@@ -50,13 +51,13 @@ public class Login implements Serializable {
 		this.password = password;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	public boolean isActive() {
+        return status;
+    }
+ 
+    public void setActive(boolean active) {
+        this.status = active;
+    }
 
 	public UserRole getUserrole() {
 		return this.userrole;

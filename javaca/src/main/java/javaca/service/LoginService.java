@@ -1,11 +1,12 @@
 package javaca.service;
 
-import java.util.List;
+import org.springframework.stereotype.Service;
+
 import javaca.model.Login;
 
+@Service
 public interface LoginService {
-
- 	List<Login> findAll();
+	 
+	Login authenticate(String uname, String pwd);
  	
-
 }

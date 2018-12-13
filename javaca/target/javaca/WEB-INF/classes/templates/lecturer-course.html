@@ -26,16 +26,17 @@
 				<th>Teaching ID</th>
 				<th>Status</th>
 				<th>Course ID</th>
-				<th>User ID</th>
+				<th>Lecturer ID</th>
 				<th></th>
 			</tr>
 
 
 			<tr th:each="lecturercourse : ${list}">
 				<td th:text="${lecturercourse.teachingID}"></td>
-				<td th:text="${lecturercourse.status}"></td>
-				<td th:text="${lecturercourse.CourseID}"></td>		
-				<td th:text="${lecturercourse.UserID}"></td>	
+				<td th:text="${lecturercourse.status}"></td>	
+				<td><a th:href="@{'/course-enrollment/' + ${lecturercourse.course}}" th:text="${lecturercourse.course}"  ></a></td>  	
+				<td th:text="${lecturercourse.user}"></td>
+				<td><a th:href="@{'/course-enrollment/' + ${lecturercourse.course}}">View Course Enrollment</a></td>  	
 				  
 			</tr>
 
