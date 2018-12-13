@@ -3,7 +3,7 @@ package javaca.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
-
+import javaca.model.Login;
 
 /**
  * The persistent class for the users database table.
@@ -22,7 +22,15 @@ public class User implements Serializable {
 
 	private String contact;
 
-	private String email;
+    private String email;
+
+	public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
 
 	private String firstName;
 
@@ -37,7 +45,8 @@ public class User implements Serializable {
 	//bi-directional one-to-one association to Login
 	@OneToOne(mappedBy="user")
 	private Login login;
-
+	
+	
 	//bi-directional many-to-one association to StudentCourse
 	@OneToMany(mappedBy="user")
 	private List<StudentCourse> studentcourses;
@@ -74,13 +83,7 @@ public class User implements Serializable {
 		this.contact = contact;
 	}
 
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 
 	public String getFirstName() {
 		return this.firstName;
@@ -128,8 +131,9 @@ public class User implements Serializable {
 		return lecturercours;
 	}
 
+	
 	public Login getLogin() {
-		return this.login;
+		return login;
 	}
 
 	public void setLogin(Login login) {
@@ -158,6 +162,7 @@ public class User implements Serializable {
 		return studentcours;
 	}
 
+	
 	public UserRole getUserrole() {
 		return this.userrole;
 	}
@@ -165,5 +170,7 @@ public class User implements Serializable {
 	public void setUserrole(UserRole userrole) {
 		this.userrole = userrole;
 	}
+
+	
 
 }

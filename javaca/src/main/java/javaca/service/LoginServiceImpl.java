@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javaca.model.Login;
+import javaca.model.User;
 import javaca.repository.LoginRepository;
 
 @Service
@@ -20,5 +21,8 @@ public class LoginServiceImpl implements LoginService {
 	public List<Login> findAll() {
 		return loginRepository.findAll();
 	}
+
+	
+	
 
 }

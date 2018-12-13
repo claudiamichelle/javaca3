@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lecturer Enrollment Form</title>
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<h1 align="center">Lecturer Enrollment Form</h1>
+
+
+
+	<form action="#" th:action="@{/save1}" th:object="${user}"
+		method="post">
+
+		<table>
+			<tr>
+				<td width="10%">Last Name :</td>
+
+				<td width="90%" align="left"><input type="text"
+					th:field="*{lastName}" /></td>
+
+			</tr>
+			<tr>
+				<td>First Name :</td>
+
+				<td><input type="text" th:field="*{firstName}" /></td>
+
+			</tr>
+
+			<tr>
+				<td>Email :</td>
+
+				<td><input type="email" th:field="*{email}" /></td>
+
+			</tr>
+
+			<tr>
+				<td>Address :</td>
+
+				<td><input type="text" th:field="*{address}" /></td>
+
+			</tr>
+
+			<tr>
+				<td>contact :</td>
+
+				<td><input type="tel" th:field="*{contact}" /></td>
+
+			</tr>
+
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Enroll" /> 
+				<input onclick='javascript:window.history.back()' value='Back' type='button' /></td>
+			</tr>
+
+		</table>
+
+	</form>
+
+
+</body>
+</html>

@@ -15,8 +15,7 @@ public class Login implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String loginID;
-
+    private String loginID;
 	private String password;
 
 	private String status;
@@ -27,24 +26,34 @@ public class Login implements Serializable {
 	private UserRole userrole;
 
 	//bi-directional one-to-one association to User
+	
 	@OneToOne
-	@JoinColumn(name="LoginID")
-	private User user;
+	@JoinColumn(name="Email")
+	private User user; //should reference to email not userid
+
+	
+
 
 	public Login() {
 	}
 
-	public String getLoginID() {
-		return this.loginID;
+	
+
+	public String getPassword() {
+		return this.password;
 	}
+
+	public String getLoginID() {
+		return loginID;
+	}
+
+
 
 	public void setLoginID(String loginID) {
 		this.loginID = loginID;
 	}
 
-	public String getPassword() {
-		return this.password;
-	}
+
 
 	public void setPassword(String password) {
 		this.password = password;
