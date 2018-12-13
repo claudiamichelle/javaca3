@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 
 <link rel="STYLESHEET" type="text/css"
@@ -11,75 +12,69 @@
 
 
 
-    <head>
-        <title>Course Edit Form </title>
-        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
-         <link rel="stylesheet" th:href="@{/css/custom.css}"/>
-          <link rel="stylesheet" th:href="@{/css/main.css}"/>
+<head>
+<title>Course Edit Form</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
 
-    </head>
-	<body>
-	
-		<div>
- 	<h1>Course Edit Form</h1>
- 	
-	     <form action="#" th:action="@{/editsavecourse}" th:object="${course}" method="post">
-	     <input type="hidden"  th:value="${courseID}"  th:field="*{courseID}" />
-	     <table>
-	     <tr>
-			<td width="10%">Title :</td>
-				
-			<td width="90%" align="left"><input type="text" th:field="*{title}" /></td>
-								
-		</tr>
-		<tr>
-			<td width="10%">Capacity :</td>
-				
-			<td width="90%" align="left"><input type="text" th:field="*{capacity}" /></td>
-								
-		</tr>
-		
-		<tr>
-			<td width="10%">Start Date :</td>
-				
-			<td width="90%" align="left"><input type="text" th:field="*{StartDate}"> (yyyy-mm-dd)</td>
-			 
-								
-		</tr>
-		
-		<tr>
-			<td width="10%">End Date :</td>
-				
-			<td width="90%" align="left"><input type="text" th:field="*{EndDate}"> (yyyy-mm-dd)</td>
-			
-								
-		</tr>
-		
+</head>
+<body>
 
-		<tr>
-			<td width="10%">Status :	</td>
-				
-			<td width="90%" align="left">
-			 <input type="radio" th:field="*{status}" value="A"/><label>Active</label>
-			 <input type="radio" th:field="*{status}" value="I"/><label>Inactive</label>
-                  </td>
-									
-		</tr>
-		
-		
-		<tr>
-		<td>	</td>
-		<td >
-	              <input type="submit" value="Save"/> 
-	              <input onclick='javascript:window.history.back()' value='Back' type='button' />
-	            </td>
-	        </tr>
-	        
-		</table>
-		
-		
-	    
-	     </form>
-	     </div>
-	</body>
+	<div>
+		<h1>Course Edit Form</h1>
+
+		<form action="#" th:action="@{/editsavecourse}" th:object="${course}"
+			method="post">
+			<input type="hidden" th:value="${courseID}" th:field="*{courseID}" />
+			<table>
+				<tr>
+					<td width="10%">Title :</td>
+
+					<td width="90%" align="left"><input type="text"
+						th:field="*{title}" /></td>
+
+				</tr>
+				<tr>
+					<td width="10%">Capacity :</td>
+
+					<td width="90%" align="left"><input type="text"
+						th:field="*{capacity}" /></td>
+
+				</tr>
+
+				<tr>
+					<td width="10%">Start Date :</td>
+
+					<td width="90%" align="left"><input type="text"
+						th:field="*{StartDate}"> (yyyy-mm-dd)</td>
+
+
+				</tr>
+
+				<tr>
+					<td width="10%">End Date :</td>
+
+					<td width="90%" align="left"><input type="text"
+						th:field="*{EndDate}"> (yyyy-mm-dd)</td>
+
+
+				</tr>
+
+
+
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Save" /> <input
+						onclick='javascript:window.history.back()' value='Back'
+						type='button' /></td>
+				</tr>
+
+			</table>
+
+
+
+		</form>
+	</div>
+</body>
 </html>

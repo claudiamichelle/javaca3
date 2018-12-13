@@ -31,6 +31,17 @@ public class LecturerCourseServiceImpl implements LecturerCourseService {
 	@Transactional
 	public LecturerCourse save(LecturerCourse lc) {
 		return lecturerCourseRepository.save(lc);
-
+	}
+	
+	@Override
+	@Transactional
+	public List<LecturerCourse> showListOfLecturerCoursesByCourseID(String cid) {
+		return lecturerCourseRepository.showListOfLecturerCoursesByCourseID(cid);
+	}
+	
+	@Override
+	@Transactional
+	public List<LecturerCourse> showListOfLecturerCoursesByUserID(int uid) {
+		return lecturerCourseRepository.showListOfLecturerCoursesByUserID(uid);
 	}
 }

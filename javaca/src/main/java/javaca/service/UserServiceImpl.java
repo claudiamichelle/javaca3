@@ -50,4 +50,16 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userRepository.findAll();
 	}
+	
+	@Override
+	@Transactional
+	public List<User> showActiveLecturersOnly() {
+		return userRepository.showActiveLecturersOnly();
+	}
+	
+	@Override
+	@Transactional
+	public List<User> showActiveStudentsOnly() {
+		return userRepository.showActiveStudentsOnly();
+	}
 }

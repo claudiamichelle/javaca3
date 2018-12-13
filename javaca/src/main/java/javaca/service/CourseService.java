@@ -15,4 +15,6 @@ public interface CourseService {
 	Course save(Course course);
 
 	long countTotalCourses();
+	
+	void delete(Course c);
 }
