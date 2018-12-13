@@ -1,0 +1,64 @@
+CTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Student Enrollment Form </title>
+        <link rel="stylesheet" th:href="@{/css/custom.css}" />
+	<link rel="stylesheet" th:href="@{/css/main.css}" />
+    </head>
+	<body>
+
+		<div>
+ 	<h1>Add Course Form</h1>
+ 	
+	     <form action="#" th:action="@{/save}" th:object="${course}" method="post">
+	     
+	     <table>
+	     <tr>
+			<td width="10%">Title :</td>
+				
+			<td width="90%" align="left">
+			<input type="text" th:field="*{title}" />
+			<label th:if="${#fields.hasErrors('title')}"  th:errors="*{title}"  th:class="'error'">Error in Title</label></td>
+								
+		</tr>
+		
+		
+		<tr>
+			<td width="10%">Start Date :</td>
+				
+			<td width="90%" align="left"><input size="16" type="date" id="datepicker1" th:field=${course.startdate}/></td>
+								
+		</tr>
+		
+		<tr>
+			<td width="10%">End Date :</td>
+				
+			<td width="90%" align="left"><input size="16" type="date" id="datepicker2" th:field=${course.enddate}/></td>
+								
+		</tr>
+		
+		<tr>
+			<td width="10%">Capacity :</td>
+				
+			<td width="90%" align="left">
+			<input type="text" th:field="*{capacity}" />
+			<label th:if="${#fields.hasErrors('capacity')}"  th:errors="*{capacity}"  th:class="'error'">Error in Capacity</label></td>
+								
+		</tr>
+		
+		
+		<tr>
+		<td>	</td>
+		<td >
+	              <input type="submit" value="Enroll"/> 
+	              
+	            </td>
+	        </tr>
+	        
+		</table>
+	    
+	     </form>
+	     </div>
+	</body>
+</html>
+

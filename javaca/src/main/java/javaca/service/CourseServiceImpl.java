@@ -20,5 +20,31 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> findAll() {
 		return courseRepository.findAll();
 	}
+	
+	@Override
+	@Transactional
+	public List<Course> getActiveCourseforStudent(){
+		return courseRepository.getActiveCourseforStudent();
+	}
+	
+	@Override
+	@Transactional
+	public Course findOneCourse(String cid) {
+		return courseRepository.getOne(cid);
+	}
+
+	@Override
+	@Transactional
+	public Course save(Course course) {
+		return courseRepository.save(course);
+	}
+
+	@Override
+	@Transactional
+	public long countTotalCourses() {
+		return courseRepository.count();
+	}
+
+	
 
 }

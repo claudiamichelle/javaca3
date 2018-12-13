@@ -24,5 +24,9 @@ public interface StudentCourseService {
 
 	List<String> listStudentGrades(int uid);
 
+	List<StudentCourse> showStudentCurrentCourse(int uid);
+
+	void dropCourse(int eid);
+
 
 }

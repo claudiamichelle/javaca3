@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lecturer Course</title>
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+
+<body>
+	<h1 align="center">Course Enrollment</h1>
+	<table id="t02" cellpadding="2">
+		<tr>
+			<th><a href=""><h2>link to somewhere...</h2></a></th>
+
+			<th><a align="right" href="/delete"><h2>link to another
+						place...</h2></a></th>
+		</tr>
+	</table>
+	<table>
+
+
+	</table>
+
+	<form:form>
+		<table id="t01" border="2" width="70%" cellpadding="2">
+			<tr>
+				<th>Course ID</th>
+				<th>Title</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Capacity</th>
+				<th>Enroll</th>
+
+				
+			</tr>
+
+
+			<tr th:each="course: ${list}">
+				<td th:text="${course.courseID}"></td>
+				<td th:text="${course.Title}"></td>
+				<td th:text="${course.StartDate}"></td>
+				<td th:text="${course.EndDate}"></td>
+				<td th:text="${course.capacity}"></td>
+
+				<td><a
+					th:href="@{'/course-enrolled/' + ${course.courseID}}">Enroll</a></td>
+
+			</tr>
+
+		</table>
+		<br />
+
+
+	</form:form>
+</body>
+
+
+</html>

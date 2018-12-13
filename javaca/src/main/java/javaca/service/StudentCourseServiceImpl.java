@@ -64,62 +64,74 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		return studentCourseRepository.listStudentGrades(uid);
 	}
 	
-
+	@Override
+	@Transactional
+	public List<StudentCourse> showStudentCurrentCourse(int uid){
+		return studentCourseRepository.showStudentCurrentCourses(uid);
+	}
+	
+	@Override
+	@Transactional
+	public void dropCourse(int eid) {
+		studentCourseRepository.dropCourse(eid);
+		return; 
+	}
+	
 	@Override
 	@Transactional
 	public double calculateCGPA(int uid) {
 		List<String> gradeslist = studentCourseRepository.listStudentGrades(uid);
-		
+
 		int listsize = gradeslist.size();
 		double grade = 0.00;
-		double sum =0.00;
-		int count = 0;
-		
-		for(int i =0; i<listsize-1; i++) {
+		double sum = 0.00;
+		double count = 0;
+
+		for (int i = 0; i < listsize - 1; i++) {
+
+			if (gradeslist.get(i).equals(null) || gradeslist.get(i).equals("") || gradeslist.get(i).equals(" ")) {
+				grade = 0.00;
+			}
+			if (gradeslist.get(i).equals("A+") || gradeslist.get(i).equals("A")) {
+				grade = 5.00;
+				count++;
+			} else if (gradeslist.get(i).equals("A-")) {
+				grade = 4.50;
+				count++;
+			} else if (gradeslist.get(i).equals("B+")) {
+				grade = 4.00;
+				count++;
+			} else if (gradeslist.get(i).equals("B")) {
+				grade = 3.50;
+				count++;
+			} else if (gradeslist.get(i).equals("B-")) {
+				grade = 3.00;
+				count++;
+			} else if (gradeslist.get(i).equals("C+")) {
+				grade = 2.50;
+				count++;
+			} else if (gradeslist.get(i).equals("C")) {
+				grade = 2.00;
+				count++;
+			} else if (gradeslist.get(i).equals("D+")) {
+				grade = 1.50;
+				count++;
+			} else if (gradeslist.get(i).equals("D")) {
+				grade = 1.00;
+				count++;
+			} else if (gradeslist.get(i).equals("F")) {
+				grade = 0.00;
+				count++;
+			}
 			
-			if(gradeslist.get(i) != null) {
-				if(gradeslist.get(i).equals("A+") || gradeslist.get(i).equals("A")) {
-					grade = 5.00;
-				}
-				else if(gradeslist.get(i).equals("A-")) {
-					grade = 4.50;
-				}
-				else if(gradeslist.get(i).equals("B+")) {
-					grade = 4.00;
-				}
-				else if(gradeslist.get(i).equals("B")) {
-					grade = 3.50;
-				}
-				else if(gradeslist.get(i).equals("B-")) {
-					grade = 3.00;
-				}
-				else if(gradeslist.get(i).equals("C+")) {
-					grade = 2.50;
-				}
-				else if(gradeslist.get(i).equals("C")) {
-					grade = 2.00;
-				}
-				else if(gradeslist.get(i).equals("D+")) {
-					grade = 1.50;
-				}
-				else if(gradeslist.get(i).equals("D")) {
-					grade = 1.00;
-				}
-				else if(gradeslist.get(i).equals("F")) {
-					grade = 0.00;
-				}
-				count ++;
-				
-				sum = sum + grade;
-			}
-			else {
-				continue;
-			}
+			sum = sum + grade;
 		}
-		
-		double cgpa = sum/count;
-		return cgpa;
-		
-	}
+	double cgpa = sum/count;
+	return cgpa;
+}
+
+
+
+
 
 }
