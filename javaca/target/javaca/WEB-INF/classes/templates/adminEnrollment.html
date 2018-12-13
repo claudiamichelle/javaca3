@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manage Enrollment</title>
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <h1 align="center">Lecturer Course</h1>
+	<table id="t02" cellpadding="2">
+		<tr>
+			<th>studentID<input id = "txt_sID" type = "text"></th>
+			<th><a align="right" href="/delete"><h2>link to another place...</h2></a></th>
+		</tr>
+	</table>
+	<table>
+
+
+	</table>
+
+	<form:form>
+		<table id="t01" border="2" width="70%" cellpadding="2">
+			<tr>
+				<th>EnrollmentID</th>
+				<th>EnrollmentDate</th>
+				<th>Status</th>
+				<th>Course ID</th>
+				<th>User ID</th>
+			</tr>
+
+
+			<tr th:each="studentcourse : ${list}">
+				<td th:text="${studentcourse.EnrollmentID}"></td>
+				<td th:text="${studentcourse.EnrollmentDate}"></td>
+				<td th:text="${studentcourse.Status}"></td>		
+				<td th:text="${studenctourse.CourseID}"></td>	
+				<td th:text="${studenctourse.UserID}"></td>	
+				  
+			</tr>
+
+		</table>
+		<br />
+
+
+	</form:form>
+</body>
+</html>

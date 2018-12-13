@@ -1,6 +1,8 @@
 package javaca.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import java.util.Date;
  * 
  */
 @Entity
+@Table(name="studentcourse")
 @NamedQuery(name="StudentCourse.findAll", query="SELECT s FROM StudentCourse s")
 public class StudentCourse implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -18,11 +21,14 @@ public class StudentCourse implements Serializable {
 	private int enrollmentID;
 
 	@Temporal(TemporalType.DATE)
-	private Date enrollmentDate;
+	private Date enrollmentdate;
 
 	private String grade;
 
 	private String status;
+	
+	
+    //In this model.really don't think change the return user and course from object to id is correct.
 
 	//bi-directional many-to-one association to Course
 	@ManyToOne
@@ -46,11 +52,11 @@ public class StudentCourse implements Serializable {
 	}
 
 	public Date getEnrollmentDate() {
-		return this.enrollmentDate;
+		return this.enrollmentdate;
 	}
 
 	public void setEnrollmentDate(Date enrollmentDate) {
-		this.enrollmentDate = enrollmentDate;
+		this.enrollmentdate = enrollmentDate;
 	}
 
 	public String getGrade() {
@@ -69,20 +75,32 @@ public class StudentCourse implements Serializable {
 		this.status = status;
 	}
 
-	public Course getCourse() {
-		return this.course;
+	public String getCourse() {
+		return this.course.getCourseID();
 	}
 
 	public void setCourse(Course course) {
 		this.course = course;
 	}
 
-	public User getUser() {
-		return this.user;
+	public int getUser() {
+		return this.user.getUserID();
 	}
 
+	public String getUserName() {
+		return user.getFirstName()+" "+user.getLastName();
+	}
+	public String getCourseName() {
+		return course.getTitle();
+	}
+	//testing if it can get the student or course name.
+	
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public void setUserID(int uid) {
+		this.user.setUserID(uid);
 	}
 
 }

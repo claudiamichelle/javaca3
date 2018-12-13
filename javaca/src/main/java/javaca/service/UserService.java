@@ -7,5 +7,6 @@ import javaca.model.User;
 public interface UserService {
 
 	List<User> findAll();
+	User findOne(int uid);
 
 }

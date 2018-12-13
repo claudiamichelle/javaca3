@@ -8,5 +8,6 @@ import javaca.model.Course;
 public interface CourseService {
 
 	List<Course> findAll();
+	Course findOne(String cid);
 
 }

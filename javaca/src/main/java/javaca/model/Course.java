@@ -43,7 +43,11 @@ public class Course implements Serializable {
 
 	public Course() {
 	}
-
+    
+	public String getCourse() 
+	{
+		return this.courseID;
+	}
 	public String getCourseID() {
 		return this.courseID;
 	}

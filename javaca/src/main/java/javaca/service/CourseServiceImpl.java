@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javaca.model.Course;
+import javaca.model.User;
 import javaca.repository.CourseRepository;
 
 @Service
@@ -20,5 +21,9 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> findAll() {
 		return courseRepository.findAll();
 	}
-
+	@Override
+	@Transactional
+	public Course findOne(String cid) {
+		return courseRepository.findOne(cid);
+	}
 }
