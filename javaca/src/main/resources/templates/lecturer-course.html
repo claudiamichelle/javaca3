@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<h1 align="center">Courses you teach</h1>
+	<h1 align="center">Your Courses</h1>
 
 	<form:form>
 		<table id="t01" border="2" width="70%" cellpadding="2">
@@ -16,16 +16,13 @@
 				<th>Teaching ID</th>
 				<th>Status</th>
 				<th>Course ID</th>
-			
-				<th></th>
+				<th>View Course Enrollment</th>
 			</tr>
 
 
 			<tr th:each="lecturercourse : ${list}">
 				<td th:text="${lecturercourse.teachingID}"></td>
 				<td th:text="${lecturercourse.status}"></td>	
-				<td th:text="${lecturercourse.Course}"></td>		
-			
 				<td><a th:href="@{'/course-enrollment/' + ${lecturercourse.course}}" th:text="${lecturercourse.course}"  ></a></td>  	
 				<td><a th:href="@{'/course-enrollment/' + ${lecturercourse.course}}">View Course Enrollment</a></td>  	
 				  
