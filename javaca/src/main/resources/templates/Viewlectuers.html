@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>View all Lecturers</title>
 <link rel="stylesheet" th:href="@{/css/custom.css}" />
@@ -8,20 +9,18 @@
 </head>
 <body>
 	<h1 align="center">All Lecturers</h1>
- 		<div class="topnav">
-  		<a href="/">Home</a>
-  		<a class="active" href="/Viewlectuers">View all Lecturers</a>
- 	 	<a href="/Addlecture">Add New Lecturer </a>
- 		<a href="/ViewStudents">View all Students</a>
- 	 	<a href="/adduser">Add New Student </a>
- 	 	<a href="/manage-viewCourse">View all Courses</a>
- 	 	<a href="/manage-addCourse">Add New Course</a>
- 	 	<a href="/ListCourses">Assign Lecturer to a Course</a>
- 	 	<a href="/ViewLecturerCourse">View Assigned Courses</a>
+	<div class="topnav">
+		<a href="/">Home</a> <a class="active" href="/Viewlectuers">View
+			all Lecturers</a> <a href="/Addlecture">Add New Lecturer </a> <a
+			href="/ViewStudents">View all Students</a> <a href="/adduser">Add
+			New Student </a> <a href="/manage-viewCourse">View all Courses</a> <a
+			href="/manage-addCourse">Add New Course</a> <a href="/ListCourses">Assign
+			Lecturer to a Course</a> <a href="/ViewLecturerCourse">View Assigned
+			Courses</a>
 	</div>
 	<br />
 	<br />
- 	<form:form>
+	<form:form>
 		<table id="t01" border="2" width="70%" cellpadding="2">
 			<tr>
 				<th>User ID</th>
@@ -31,9 +30,10 @@
 				<th>Address</th>
 				<th>Contact</th>
 				<th>Status</th>
-				<th></th>
+				<th>Edit Details</th>
+				<th>Deactivate</th>
 			</tr>
- 			<tr th:each="user : ${list}">
+			<tr th:each="user : ${list}">
 				<td th:text="${user.userID}"></td>
 				<td th:text="${user.lastName}"></td>
 				<td th:text="${user.firstName}"></td>
@@ -42,9 +42,10 @@
 				<td th:text="${user.contact}"></td>
 				<td th:text="${user.status}"></td>
 				<td><a th:href="@{'/Editlectuer/' + ${user.userID}}">Edit</a></td>
+				<td><a th:href="@{'/disactivateLecturer/'+${user.userID}}">DisActivate</a></td>
 			</tr>
- 		</table>
+		</table>
 		<br />
- 	</form:form>
- </body>
+	</form:form>
+</body>
 </html>

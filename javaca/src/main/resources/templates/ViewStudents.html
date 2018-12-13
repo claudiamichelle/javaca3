@@ -32,7 +32,8 @@
 				<th>Address</th>
 				<th>Contact</th>
 				<th>Status</th>
-				<th></th>
+				<th>Edit Details</th>
+				<th>Deactivate</th>
 			</tr>
  			<tr th:each="user : ${list}">
 				<td th:text="${user.userID}"></td>
@@ -42,7 +43,8 @@
 				<td th:text="${user.address}"></td>	
 				 <td th:text="${user.contact}"></td>	
 				<td th:text="${user.status}"></td>	
-				 <td><a th:href="@{'/EditUser/' + ${user.userID}}">Edit</a></td> 
+				 <td><a th:href="@{'/EditUser/' + ${user.userID}}">Edit</a></td>
+				 <td><a th:href="@{'/disactivateStudent/'+${user.userID}}">DisActivate</a></td>   
 				  
 				  
 			</tr>

@@ -19,8 +19,10 @@
  	 	<a href="/adduser">Add New Student </a>
  	 	<a class="active" href="/manage-viewCourse">View all Courses</a>
  	 	<a href="/manage-addCourse">Add New Course</a>
- 	 	<a href="/editEnrollment">Add New Admin</a>
+ 	 	<a href="/editEnrollment">Assign Student to a course</a>
  	 	<a href="/adminEnrollment">Edit Student Enrollment</a>
+ 	 	<a href="/ListCourses">Assign Lecturer to a Course</a>
+ 	 	<a href="/ViewLecturerCourse">View Assigned Courses</a>
 	</div>
 	<br />
 	<br />
@@ -33,10 +35,8 @@
 				<th>Start Date</th>
 				<th>End Date</th>
 				<th>Capacity</th>
-				<th>Status</th>
-				<th>     </th>
-
-				
+				<th>Edit Details</th>
+				<th>Deactivate</th>
 			</tr>
 
 
@@ -46,10 +46,9 @@
 				<td th:text="${course.StartDate}"></td>
 				<td th:text="${course.EndDate}"></td>
 				<td th:text="${course.capacity}"></td>
-				<td th:text="${course.status}"></td>
-
+			
 				<td><a th:href="@{'/manage-editCourse/'+${course.courseID}}">Edit</a></td>
-
+				<td><a th:href="@{'/disactivateCourse/'+${course.courseID}}">DisActivate</a></td>  
 			</tr>
 
 		</table>

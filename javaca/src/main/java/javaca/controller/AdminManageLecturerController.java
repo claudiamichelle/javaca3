@@ -1,7 +1,9 @@
 package javaca.controller;
 
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javaca.model.LecturerCourse;
 import javaca.model.User;
 import javaca.model.UserRole;
+import javaca.service.LecturerCourseService;
 import javaca.service.UserServiceImpl;
 
 @Controller
 public class AdminManageLecturerController {
 	@Autowired
 	private UserServiceImpl service1;
+	
+	@Autowired
+	private LecturerCourseService lcService;
 
 	@RequestMapping(value = "/Addlecture", method = RequestMethod.GET)
 	public String newRegistration(ModelMap model) {
@@ -35,7 +42,7 @@ public class AdminManageLecturerController {
 		UserRole ur = new UserRole();
 		ur.setRoleID(2);
 		u1.setUserrole(ur);
-		u1.setStatus("A");
+		u1.setStatus("Active");
 		if (result.hasErrors()) {
 			System.out.println("has errors");
 			return "Addlecture";
@@ -46,7 +53,7 @@ public class AdminManageLecturerController {
 
 	@RequestMapping(value = "/Viewlectuers", method = RequestMethod.GET)
 	public ModelAndView getAll() {
-		List<User> list = service1.showalllectures();
+		List<User> list = service1.showActiveLecturersOnly();
 		ModelAndView mav = new ModelAndView("Viewlectuers");
 		mav.addObject("list", list);
 		return mav;
@@ -71,4 +78,19 @@ public class AdminManageLecturerController {
 		service1.save(student);
 		return new ModelAndView("redirect:/Viewlectuers");
 	}
+	@RequestMapping(value = "/disactivateLecturer/{uid}",method = RequestMethod.GET)
+	public ModelAndView disactivate(@PathVariable int uid) {
+		User u = service1.findOne(uid);
+		u.setStatus("Inactive");
+		service1.save(u);
+		
+		List<LecturerCourse> updateLC = lcService.showListOfLecturerCoursesByUserID(uid);
+		for (LecturerCourse lc: updateLC) {
+			lc.setStatus("Inactive");
+			lcService.save(lc);
+		}
+		
+		return new ModelAndView("redirect:/Viewlectuers");
+	}
+	
 }

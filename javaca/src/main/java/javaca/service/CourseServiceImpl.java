@@ -44,5 +44,9 @@ public class CourseServiceImpl implements CourseService {
 	public long countTotalCourses() {
 		return courseRepository.count();
 	}
-
+	@Override
+	@Transactional
+	public void delete(Course c) {
+		courseRepository.delete(c);
+	}
 }
