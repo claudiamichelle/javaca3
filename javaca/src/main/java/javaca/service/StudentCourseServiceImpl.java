@@ -87,7 +87,7 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		double sum = 0.00;
 		double count = 0;
 
-		for (int i = 0; i < listsize - 1; i++) {
+		for (int i = 0; i < listsize; i++) {
 
 			if (gradeslist.get(i).equals(null) || gradeslist.get(i).equals("") || gradeslist.get(i).equals(" ")) {
 				grade = 0.00;
