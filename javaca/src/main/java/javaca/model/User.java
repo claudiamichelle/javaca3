@@ -4,13 +4,14 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+
 /**
  * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name = "users")
-@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+@Table(name="users")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,17 +23,6 @@ public class User implements Serializable {
 	private int contact;
 
 	private String email;
-<<<<<<< HEAD
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-=======
->>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 
 	private String firstname;
 
@@ -40,25 +30,21 @@ public class User implements Serializable {
 
 	private String status;
 
-	// bi-directional many-to-one association to LecturerCourse
-	@OneToMany(mappedBy = "user")
+	//bi-directional many-to-one association to LecturerCourse
+	@OneToMany(mappedBy="user")
 	private List<LecturerCourse> lecturercourses;
 
-	// bi-directional one-to-one association to Login
-	@OneToOne(mappedBy = "user")
+	//bi-directional one-to-one association to Login
+	@OneToOne(mappedBy="user")
 	private Login login;
 
-	// bi-directional many-to-one association to StudentCourse
-	@OneToMany(mappedBy = "user")
+	//bi-directional many-to-one association to StudentCourse
+	@OneToMany(mappedBy="user")
 	private List<StudentCourse> studentcourses;
 
-	// bi-directional many-to-one association to UserRole
+	//bi-directional many-to-one association to UserRole
 	@ManyToOne
-<<<<<<< HEAD
-	@JoinColumn(name = "RoleID")
-=======
 	@JoinColumn(name="roleID")
->>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	private UserRole userrole;
 
 	
@@ -76,17 +62,12 @@ public class User implements Serializable {
 	public User() {
 	}
 
-<<<<<<< HEAD
-	public User(int uid) {
-		this.userID = uid;
-=======
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
->>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	}
 
 	public int getUserID() {
@@ -105,11 +86,11 @@ public class User implements Serializable {
 		this.address = address;
 	}
 
-	public String getContact() {
+	public int getContact() {
 		return this.contact;
 	}
 
-	public void setContact(String contact) {
+	public void setContact(int contact) {
 		this.contact = contact;
 	}
 
@@ -196,14 +177,14 @@ public class User implements Serializable {
 	public void setUserrole(UserRole userrole) {
 		this.userrole = userrole;
 	}
-
+	
 	public boolean isActive() {
 		// TODO Auto-generated method stub
-
+		
 		if (this.getStatus().equals("Active")) {
-			return true;
-		} else
-			return false;
+			return true;	
+		}
+		else return false;
 	}
 
 }

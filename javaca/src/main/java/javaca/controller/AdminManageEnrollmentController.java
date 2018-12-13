@@ -82,7 +82,7 @@ public class AdminManageEnrollmentController {
 		int uid = Integer.parseInt(sc.getStatus());
 		sc.setStatus("Active");
 		sc.setGrade(null);
-		sc.setCourse(cService.findOne(cid));
+		sc.setCourse(cService.findOneCourse(cid));
 		sc.setUser(uService.findOne(uid));
 		// sc.setEnrollmentDate(sgetEnrollmentDate());
 		// since I have trouble with dealing directly with foreign keys,so I just take

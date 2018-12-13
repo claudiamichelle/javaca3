@@ -1,17 +1,17 @@
 package javaca.model;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import javax.persistence.*;
 import java.util.Date;
+
 
 /**
  * The persistent class for the studentcourse database table.
  * 
  */
 @Entity
-@Table(name = "studentcourse")
-@NamedQuery(name = "StudentCourse.findAll", query = "SELECT s FROM StudentCourse s")
+@Table(name="studentcourse")
+@NamedQuery(name="StudentCourse.findAll", query="SELECT s FROM StudentCourse s")
 public class StudentCourse implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,22 +24,14 @@ public class StudentCourse implements Serializable {
 
 	private String status;
 
-	// bi-directional many-to-one association to Course
+	//bi-directional many-to-one association to Course
 	@ManyToOne
-<<<<<<< HEAD
-	@JoinColumn(name = "CourseID")
-=======
 	@JoinColumn(name="courseID")
->>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	private Course course;
 
-	// bi-directional many-to-one association to User
+	//bi-directional many-to-one association to User
 	@ManyToOne
-<<<<<<< HEAD
-	@JoinColumn(name = "UserID")
-=======
 	@JoinColumn(name="userID")
->>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	private User user;
 
 	
@@ -66,11 +58,11 @@ public class StudentCourse implements Serializable {
 		this.enrollmentID = enrollmentID;
 	}
 
-	public Date getEnrollmentDate() {
+	public String getEnrollmentDate() {
 		return this.enrollmentdate;
 	}
 
-	public void setEnrollmentDate(Date enrollmentDate) {
+	public void setEnrollmentDate(String enrollmentDate) {
 		this.enrollmentdate = enrollmentDate;
 	}
 
@@ -102,20 +94,8 @@ public class StudentCourse implements Serializable {
 		return this.user.getUserID();
 	}
 
-	public String getUserName() {
-		return user.getFirstName() + " " + user.getLastName();
-	}
-
-	public String getCourseName() {
-		return course.getTitle();
-	}
-	// testing if it can get the student or course name.
-
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public void setUserID(int uid) {
-		this.user.setUserID(uid);
-	}
 }

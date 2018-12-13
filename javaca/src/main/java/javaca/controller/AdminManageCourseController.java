@@ -62,8 +62,7 @@ public class AdminManageCourseController {
 		course.setTitle(p.getTitle());
 		course.setCapacity(p.getCapacity());
 		course.setStartDate(p.getStartDate());
-		course.setEndDate(Calendar.getInstance().getTime());
-		course.setModularCredit(p.getModularCredit());
+		course.setEndDate(p.getEndDate());
 		course.setStatus(p.getStatus());
 		
 		courseService.save(course);
