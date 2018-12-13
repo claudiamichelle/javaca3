@@ -33,10 +33,6 @@ public class UserServiceImpl implements UserService {
 	public User save(User user) {
 		return userRepository.save(user);
 	}
-
-	public List<User> showalllectures() {
-		return userRepository.showalllectures();
-	}
 	
 	@Override
 	@Transactional
@@ -53,4 +49,17 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public List<User> showalllectures() {
 		return userRepository.showalllectures();
+	}
+	
+	@Override
+	@Transactional
+	public List<User> showActiveLecturersOnly() {
+		return userRepository.showActiveLecturersOnly();
+	}
+	
+	@Override
+	@Transactional
+	public List<User> showActiveStudentsOnly() {
+		return userRepository.showActiveStudentsOnly();
+	}
 }

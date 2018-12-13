@@ -13,14 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javaca.model.Course;
+import javaca.model.StudentCourse;
 import javaca.model.User;
 import javaca.model.UserRole;
+import javaca.service.StudentCourseService;
 import javaca.service.UserServiceImpl;
 
 @Controller
 public class AdminManageStudentController {
 	@Autowired
 	private UserServiceImpl service;
+	
+	@Autowired
+	private StudentCourseService scService;
 
 	@RequestMapping(value = "/adduser", method = RequestMethod.GET)
 	public String newRegistration(ModelMap model) {
@@ -35,7 +41,7 @@ public class AdminManageStudentController {
 		UserRole ur = new UserRole();
 		ur.setRoleID(3);
 		u1.setUserrole(ur);
-		u1.setStatus("A");
+		u1.setStatus("Active");
 		if (result.hasErrors()) {
 			System.out.println("has errors");
 			return "adduser";
@@ -46,7 +52,7 @@ public class AdminManageStudentController {
 
 	@RequestMapping(value = "/ViewStudents", method = RequestMethod.GET)
 	public ModelAndView getAll() {
-		List<User> list = service.showallstudent();
+		List<User> list = service.showActiveStudentsOnly();
 		ModelAndView mav = new ModelAndView("ViewStudents");
 		mav.addObject("list", list);
 		return mav;
@@ -72,6 +78,21 @@ public class AdminManageStudentController {
 		student.setStatus(p.getStatus());
 		student.setUserrole(urole);
 		service.save(student);
+		return new ModelAndView("redirect:/ViewStudents");
+	}
+	
+	@RequestMapping(value = "/disactivateStudent/{uid}",method = RequestMethod.GET)
+	public ModelAndView disactivate(@PathVariable int uid) {
+		User u = service.findOne(uid);
+		u.setStatus("Inactive");
+		service.save(u);
+		
+		List<StudentCourse> updateSC = scService.showStudentGrades(uid);
+		for (StudentCourse sc: updateSC) {
+			sc.setStatus("Inactive");
+			scService.save(sc);
+		}
+		
 		return new ModelAndView("redirect:/ViewStudents");
 	}
 }

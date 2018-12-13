@@ -11,7 +11,7 @@ import javaca.model.LecturerCourse;
 
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
-	@Query("SELECT c from Course c WHERE c.status = 'A'")
+	@Query("SELECT c from Course c WHERE c.status = 'Active'")
 	List<Course> getActiveCourseforStudent();
 	
 	@Query("SELECT c FROM Course c WHERE c.courseID=:cid")

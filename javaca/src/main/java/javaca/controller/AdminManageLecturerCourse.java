@@ -70,7 +70,7 @@ public class AdminManageLecturerCourse {
 	
 	@ModelAttribute("lecturer")
 	public List<Integer> initializeStudents() {
- 		List<User> ulist = uService.showalllectures();
+ 		List<User> ulist = uService.showActiveLecturersOnly();
 		List<Integer> lecturers = new ArrayList<Integer>();
         for(User u:ulist) {
         	lecturers.add(u.getUserID());
@@ -79,30 +79,4 @@ public class AdminManageLecturerCourse {
 		
 	}
 	
-	@ModelAttribute("courses")
-	public List<String> initializeCourses() {
- 		List<Course> clist = cService.findAll();
-		List<String> courses = new ArrayList<String>();
-        for(Course c: clist) {
-        	courses.add(c.getCourseID());
-        }
-		return courses;
-		
-	}
-	
-	/*@ModelAttribute("courses")
-	public List<String> initializeCourses() {
- 		List<Course> clist = cService.findAll();
-		List<String> courses = new ArrayList<String>();
-		List<LecturerCourse> lclist= lcService.findAll();			
-        for(Course c:clist) {
-        	int counter = 0;
-        	for(LecturerCourse lc: lclist) {
-        		if(lc.getCourse().equals(c.getCourseID())) counter++;
-        	}
-        	if(c.getCapacity()>=counter) courses.add(c.getCourseID());
-        }        
-		return courses;		
-	}
-*/
 }

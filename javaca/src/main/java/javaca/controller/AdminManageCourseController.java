@@ -15,7 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javaca.model.Course;
-import javaca.service.CourseServiceImpl;
+import javaca.model.LecturerCourse;
+import javaca.model.StudentCourse;
+import javaca.service.CourseService;
+import javaca.service.LecturerCourseService;
+import javaca.service.StudentCourseService;
 
 
 
@@ -23,7 +27,13 @@ import javaca.service.CourseServiceImpl;
 public class AdminManageCourseController {
 	
 	@Autowired
-	private CourseServiceImpl courseService;
+	private CourseService courseService;
+	
+	@Autowired
+	private LecturerCourseService lcService;
+	
+	@Autowired
+	private StudentCourseService scService;
 	
 	/*@InitBinder("course")
 	private void initCourseBinder(WebDataBinder binder) {
@@ -35,7 +45,7 @@ public class AdminManageCourseController {
 	@RequestMapping(value = "/manage-viewCourse", method = RequestMethod.GET)
 	public ModelAndView getAll() {
 
-		List<Course> list = courseService.findAll();
+		List<Course> list = courseService.getActiveCourseforStudent();
 		ModelAndView mav = new ModelAndView("manage-viewCourse");
 		mav.addObject("list", list);
 		return mav;
@@ -62,7 +72,6 @@ public class AdminManageCourseController {
 		course.setCapacity(p.getCapacity());
 		course.setStartDate(p.getStartDate());
 		course.setEndDate(p.getEndDate());
-		course.setStatus(p.getStatus());
 		
 		courseService.save(course);
 		return new ModelAndView("redirect:/manage-viewCourse");
@@ -83,7 +92,7 @@ public class AdminManageCourseController {
 		String convert = Long.toString(CurrentNoOfCourses);
 		String padCourseWith0 = "000".substring(convert.length()) + convert;
 		course.setCourseID("C"+ padCourseWith0);
-		course.setStatus("A");
+		course.setStatus("Active");
 		
 		if(result.hasErrors()) {
 			System.out.println("has errors");
@@ -92,6 +101,28 @@ public class AdminManageCourseController {
 	
 		courseService.save(course);
 		return "redirect:/manage-viewCourse";
+	}
+	
+	@RequestMapping(value = "/disactivateCourse/{cid}",method = RequestMethod.GET)
+	public ModelAndView disactivate(@PathVariable String cid) {
+		Course c = courseService.findOneCourse(cid);
+		c.setStatus("Inactive");
+		courseService.save(c);
+		
+		List<LecturerCourse> updateLC = lcService.showListOfLecturerCoursesByCourseID(cid);
+		for (LecturerCourse lc: updateLC) {
+			lc.setStatus("Inactive");
+			lcService.save(lc);
+		}
+		
+		List<StudentCourse> updateSC = scService.showCourseEnrollment(cid);
+		for (StudentCourse sc: updateSC) {
+			sc.setStatus("Inactive");
+			scService.save(sc);
+		}
+		
+		
+		return new ModelAndView("redirect:/manage-viewCourse");
 	}
 
 }
