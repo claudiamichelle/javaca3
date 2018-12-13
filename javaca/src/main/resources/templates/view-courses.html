@@ -43,8 +43,7 @@
 				<td th:text="${course.EndDate}"></td>
 				<td th:text="${course.capacity}"></td>
 
-				<td><a
-					th:href="@{'/course-enrolled/' + ${course.courseID}}">Enroll</a></td>
+				<td><a th:href="@{'/course-enrolled/'+${course.courseID}}">Enroll</a></td>
 
 			</tr>
 
