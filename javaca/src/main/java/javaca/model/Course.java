@@ -24,8 +24,6 @@ public class Course implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date enddate;
 
-	private int modularCredit;
-
 	@Temporal(TemporalType.DATE)
 	private Date startdate;
 
@@ -41,6 +39,18 @@ public class Course implements Serializable {
 	@OneToMany(mappedBy="course")
 	private List<StudentCourse> studentcourses;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public Course() {
 	}
 
@@ -66,14 +76,6 @@ public class Course implements Serializable {
 
 	public void setEndDate(Date endDate) {
 		this.enddate = endDate;
-	}
-
-	public int getModularCredit() {
-		return this.modularCredit;
-	}
-
-	public void setModularCredit(int modularCredit) {
-		this.modularCredit = modularCredit;
 	}
 
 	public Date getStartDate() {
@@ -108,14 +110,14 @@ public class Course implements Serializable {
 		this.lecturercourses = lecturercourses;
 	}
 
-	public LecturerCourse addLecturercours(LecturerCourse lecturercourse) {
+	public LecturerCourse addLecturercourse(LecturerCourse lecturercourse) {
 		getLecturercourses().add(lecturercourse);
 		lecturercourse.setCourse(this);
 
 		return lecturercourse;
 	}
 
-	public LecturerCourse removeLecturercours(LecturerCourse lecturercourse) {
+	public LecturerCourse removeLecturercourse(LecturerCourse lecturercourse) {
 		getLecturercourses().remove(lecturercourse);
 		lecturercourse.setCourse(null);
 
@@ -130,14 +132,14 @@ public class Course implements Serializable {
 		this.studentcourses = studentcourses;
 	}
 
-	public StudentCourse addStudentcours(StudentCourse studentcourse) {
+	public StudentCourse addStudentcourse(StudentCourse studentcourse) {
 		getStudentcourses().add(studentcourse);
 		studentcourse.setCourse(this);
 
 		return studentcourse;
 	}
 
-	public StudentCourse removeStudentcours(StudentCourse studentcourse) {
+	public StudentCourse removeStudentcourse(StudentCourse studentcourse) {
 		getStudentcourses().remove(studentcourse);
 		studentcourse.setCourse(null);
 

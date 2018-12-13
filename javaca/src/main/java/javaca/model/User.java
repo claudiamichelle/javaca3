@@ -22,13 +22,7 @@ public class User implements Serializable {
 
 	private String contact;
 
-	   private String email;
-	 	public String getEmail() {
-		return email;
-	}
-	 public void setEmail(String email) {
-		this.email = email;
-	}
+	private String email;
 
 	private String firstname;
 
@@ -50,10 +44,30 @@ public class User implements Serializable {
 
 	//bi-directional many-to-one association to UserRole
 	@ManyToOne
-	@JoinColumn(name="RoleID")
+	@JoinColumn(name="roleID")
 	private UserRole userrole;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public User() {
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getUserID() {

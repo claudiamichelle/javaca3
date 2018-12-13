@@ -21,14 +21,27 @@ public class LecturerCourse implements Serializable {
 
 	//bi-directional many-to-one association to Course
 	@ManyToOne
-	@JoinColumn(name="CourseID")
+	@JoinColumn(name="courseID")
 	private Course course;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumn(name="UserID")
+	@JoinColumn(name="userID")
 	private User user;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public LecturerCourse() {
 	}
 
