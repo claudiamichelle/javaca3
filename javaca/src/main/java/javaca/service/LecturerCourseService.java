@@ -8,5 +8,6 @@ public interface LecturerCourseService {
 
 	List<LecturerCourse> findAll();
 	List<LecturerCourse> getActiveCourses();
+	LecturerCourse save(LecturerCourse lc);
 
 }
