@@ -22,7 +22,13 @@ public class User implements Serializable {
 
 	private String contact;
 
-	private String email;
+	   private String email;
+	 	public String getEmail() {
+		return email;
+	}
+	 public void setEmail(String email) {
+		this.email = email;
+	}
 
 	private String firstname;
 
@@ -74,14 +80,6 @@ public class User implements Serializable {
 		this.contact = contact;
 	}
 
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getFirstName() {
 		return this.firstname;
 	}
@@ -129,7 +127,7 @@ public class User implements Serializable {
 	}
 
 	public Login getLogin() {
-		return this.login;
+		return login;
 	}
 
 	public void setLogin(Login login) {

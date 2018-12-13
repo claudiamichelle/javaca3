@@ -50,8 +50,8 @@ public class AdminManageCourseController {
 	}
 	
 	
-	@RequestMapping(value="/editsave",method=RequestMethod.POST)
-	public ModelAndView editsave(@ModelAttribute("course") Course p, BindingResult result) {
+	@RequestMapping(value="/editsavecourse",method=RequestMethod.POST)
+	public ModelAndView editsavecourse(@ModelAttribute("course") Course p, BindingResult result) {
 	
 		if(result.hasErrors())
 		{
@@ -70,7 +70,7 @@ public class AdminManageCourseController {
 		return new ModelAndView("redirect:/manage-viewCourse");
 	}
 	
-	@RequestMapping(value="/manage-addCourse",method=RequestMethod.POST)
+	@RequestMapping(value="/manage-addCourse",method=RequestMethod.GET)
 	public String newRegistration(ModelMap model) {
 		Course course = new Course();
 		model.addAttribute("course",course);

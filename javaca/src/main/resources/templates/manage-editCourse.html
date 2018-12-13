@@ -23,7 +23,7 @@
 		<div>
  	<h1>Course Edit Form</h1>
  	
-	     <form action="#" th:action="@{/editsave}" th:object="${course}" method="post">
+	     <form action="#" th:action="@{/editsavecourse}" th:object="${course}" method="post">
 	     <input type="hidden"  th:value="${courseID}"  th:field="*{courseID}" />
 	     <table>
 	     <tr>
@@ -42,14 +42,14 @@
 		<tr>
 			<td width="10%">Start Date :</td>
 				
-			<td width="90%" align="left"><input size="16" type="date" th:field=${course.startdate}/></td>
+			<td width="90%" align="left"><input size="16" type="date" /></td>
 								
 		</tr>
 		
 		<tr>
 			<td width="10%">End Date :</td>
 				
-			<td width="90%" align="left"><input size="16" type="date" th:field=${course.enddate} /></td>
+			<td width="90%" align="left"><input size="16" type="date"  /></td>
 								
 		</tr>
 		
@@ -68,7 +68,7 @@
 		<tr>
 		<td>	</td>
 		<td >
-	              <input type="submit" value="Edit"/> 
+	              <input type="submit" value="Save"/> 
 	              <input onclick='javascript:window.history.back()' value='Back' type='button' />
 	            </td>
 	        </tr>

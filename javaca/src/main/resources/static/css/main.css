@@ -29,7 +29,7 @@ table#t01 tr:nth-child(odd) {
    
 }
 table#t01 th {
-    background-color: blue;
+    background-color: black;
     color: white;
     text-align: center;
 }
@@ -51,7 +51,7 @@ table#t02 tr:nth-child(odd) {
 }
 table#t02 th {
     
-    background-color: lightblue;
+    background-color: black;
     text-align: center;
 }
 

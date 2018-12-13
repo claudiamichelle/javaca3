@@ -29,13 +29,13 @@ public class Login implements Serializable {
 	//bi-directional one-to-one association to User
 	@OneToOne
 	@JoinColumn(name="Email")
-	private User user;
+	private User user; //should reference to email not userid
 
 	public Login() {
 	}
 
 	public String getLoginID() {
-		return this.loginID;
+		return loginID;
 	}
 
 	public void setLoginID(String loginID) {

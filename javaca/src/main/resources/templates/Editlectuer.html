@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Lecturer</title>
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+	<h1>Edit Lecturer</h1>
+ 	<form action="#" th:action="@{/editsave1}" th:object="${user}"
+		method="post">
+		<input type="hidden" th:value="${userID}" th:field="*{userID}" />
+		<table>
+			<tr>
+				<td width="10%">Last Name :</td>
+ 				<td width="90%" align="left"><input type="text"
+					th:field="*{lastName}" /></td>
+ 			</tr>
+			<tr>
+				<td>First Name :</td>
+ 				<td><input type="text" th:field="*{firstName}" /></td>
+ 			</tr>
+ 			<tr>
+				<td>Email :</td>
+ 				<td><input type="email" th:field="*{email}" /></td>
+ 			</tr>
+ 			<tr>
+				<td>Address :</td>
+ 				<td><input type="text" th:field="*{address}" /></td>
+ 			</tr>
+ 			<tr>
+				<td>contact :</td>
+ 				<td><input type="tel" th:field="*{contact}" /></td>
+ 			</tr>
+ 			<tr>
+				<td>Status :</td>
+ 				<td><input type="radio" name="status" value="A" th:field="*{status}" /><label>Active</label>
+				<input type="radio" name="status" value="I" th:field="*{status}" /><label>Inactive</label>
+				</td>
+ 			</tr>
+ 			<tr>
+				<td></td>
+				<td>
+				<input type="submit" value="Save" />
+				<input onclick='javascript:window.history.back()' value='Back' type='button'/>
+				</td>
+			</tr>
+ 		</table>
+ 	</form>
+ </body>
+</html> 
