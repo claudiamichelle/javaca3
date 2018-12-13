@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Student Enrollment Form </title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+         <link rel="stylesheet" th:href="@{/css/custom.css}"/>
+          <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+    </head>
+	<body>
+	
+		<div>
+ 	<h1>Student Enrollment Form</h1>
+ 	
+	     <form action="#" th:action="@{/editsave}" th:object="${studentCourse}" method="post">
+	     <input type="hidden"  th:value="${enrollmentID}"  th:field="*{enrollmentID}" />
+	     <table>
+	     <tr>
+			<td width="10%">UserID :</td>
+				
+			<td width="90%" align="left" th:text="*{user}"></td>				
+		</tr>
+		<tr>
+			<td width="10%">CourseID :</td>
+				
+			<td width="90%" align="left" th:text="*{course}"></td>	
+			
+		</tr>
+		<tr>
+			<td width="10%">Status :</td>
+				
+			<td width="90%" align="left" th:text="*{status}"></td>					
+		</tr>
+	     <tr>
+			<td width="10%">Grade :</td>
+				
+			<td width="90%" align="left"><input type="text" th:field="*{grade}" /></td>
+								
+		</tr>
+
+		
+		<tr>
+		<td>	</td>
+		<td >
+	              <input type="submit" value="Edit"/> 
+	              
+	            </td>
+	        </tr>
+	        
+		</table>
+		
+		
+	    
+	     </form>
+	     </div>
+	</body>
+</html>

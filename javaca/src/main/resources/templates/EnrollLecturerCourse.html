@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin Enroll LecturerCourse Form</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+
+</head>
+<body>
+
+	<div>
+		<h1>Enroll Lecturer to a Course</h1>
+		<form action="#" th:action="@{/saveLC}" th:object="${course}" method="post">
+	     <input type="hidden"  th:value="${courseID}"  th:field="*{courseID}" />
+		
+			<table>
+				<tr>
+					<td>Course ID</td>
+					<td><label th:text="*{courseID}"></label></td>
+				</tr>
+
+
+				<tr>
+					<td>Lecturer ID</td>
+					<td><select th:field="*{status}">
+							<option th:each="status:${lecturer}" th:value="${status}" th:text="${status}">LecturerID</option>
+					</select></td>
+				</tr>
+
+				<tr>
+					<td>Status</td>
+					<td><input type="text" value="A" readonly="readonly" /></td>
+				</tr>
+				<tr>
+
+					<td><input type="submit"/></td>
+				</tr>
+			</table>
+
+		</form>
+	</div>
+</body>
+</html>

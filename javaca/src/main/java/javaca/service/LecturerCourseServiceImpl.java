@@ -27,4 +27,11 @@ public class LecturerCourseServiceImpl implements LecturerCourseService {
 		return lecturerCourseRepository.getActiveCourses();
 	}
 
+	@Override
+	@Transactional
+	public LecturerCourse save(LecturerCourse lc) {
+		return lecturerCourseRepository.save(lc);
+		
+	}
+
 }
