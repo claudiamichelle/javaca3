@@ -164,4 +164,5 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		studentCourseRepository.delete(sc);
 	}
 
+
 }

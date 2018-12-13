@@ -10,14 +10,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import javaca.model.Login;
+import javaca.model.User;
 import javaca.service.LoginService;
+import javaca.service.UserService;
 
 @Controller
+
 public class LoginController {
 	@Autowired
 	LoginService loginService;
+
+	@Autowired
+	UserService userService;
 
 	@RequestMapping("/403")
 	public String accessDenied() {
@@ -28,6 +35,8 @@ public class LoginController {
 	public String home() {
 		return "index";
 	}
+
+	static public int userID;
 
 	// GET: Show Login Page
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)

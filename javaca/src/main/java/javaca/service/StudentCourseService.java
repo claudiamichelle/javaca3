@@ -40,4 +40,5 @@ public interface StudentCourseService {
 
 	void delete(StudentCourse sc);//
 
+
 }

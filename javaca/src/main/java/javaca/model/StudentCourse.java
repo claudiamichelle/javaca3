@@ -83,7 +83,7 @@ public class StudentCourse implements Serializable {
 	}
 
 	public String getCourse() {
-		return this.course.getCourseID();
+		return course.getCourseID();
 	}
 
 	public void setCourse(Course course) {
