@@ -18,8 +18,7 @@ public class StudentCourse implements Serializable {
 	@Id
 	private int enrollmentID;
 
-	@Temporal(TemporalType.DATE)
-	private Date enrollmentdate;
+	private String enrollmentdate;
 
 	private String grade;
 
@@ -27,14 +26,35 @@ public class StudentCourse implements Serializable {
 
 	// bi-directional many-to-one association to Course
 	@ManyToOne
+<<<<<<< HEAD
 	@JoinColumn(name = "CourseID")
+=======
+	@JoinColumn(name="courseID")
+>>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	private Course course;
 
 	// bi-directional many-to-one association to User
 	@ManyToOne
+<<<<<<< HEAD
 	@JoinColumn(name = "UserID")
+=======
+	@JoinColumn(name="userID")
+>>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	private User user;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public StudentCourse() {
 	}
 

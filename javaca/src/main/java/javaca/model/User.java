@@ -19,9 +19,10 @@ public class User implements Serializable {
 
 	private String address;
 
-	private String contact;
+	private int contact;
 
 	private String email;
+<<<<<<< HEAD
 
 	public String getEmail() {
 		return email;
@@ -30,6 +31,8 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+=======
+>>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 
 	private String firstname;
 
@@ -51,14 +54,39 @@ public class User implements Serializable {
 
 	// bi-directional many-to-one association to UserRole
 	@ManyToOne
+<<<<<<< HEAD
 	@JoinColumn(name = "RoleID")
+=======
+	@JoinColumn(name="roleID")
+>>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	private UserRole userrole;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public User() {
 	}
 
+<<<<<<< HEAD
 	public User(int uid) {
 		this.userID = uid;
+=======
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+>>>>>>> refs/heads/ChangeDATEStoSTRING_and_contact_from_STRINGtoINT
 	}
 
 	public int getUserID() {

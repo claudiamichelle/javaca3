@@ -23,14 +23,28 @@ public class Login implements Serializable {
 
 	//bi-directional many-to-one association to UserRole
 	@ManyToOne
-	@JoinColumn(name="RoleID")
+	@JoinColumn(name="roleID")
 	private UserRole userrole;
 
 	//bi-directional one-to-one association to User
 	@OneToOne
-	@JoinColumn(name="Email")
+	@JoinColumn(name="email")
 	private User user; //should reference to email not userid
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String getLoginID() {
 		return loginID;
 	}

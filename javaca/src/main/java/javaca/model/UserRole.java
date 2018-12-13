@@ -28,6 +28,16 @@ public class UserRole implements Serializable {
 	@OneToMany(mappedBy="userrole")
 	private List<User> users;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public UserRole() {
 	}
 
