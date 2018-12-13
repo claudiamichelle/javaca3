@@ -4,7 +4,6 @@ import java.util.List;
 
 import javaca.model.Course;
 
-
 public interface CourseService {
 
 	List<Course> findAll();
@@ -16,5 +15,4 @@ public interface CourseService {
 	Course save(Course course);
 
 	long countTotalCourses();
-
 }

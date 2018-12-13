@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin Enrollment Form</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+ </head>
+<body>
+ 	<div>
+		<h1>Admin Enrollment Form</h1>
+		<form action="#" th:action="@{/save}" th:object="${StudentCourse}"
+			method="post">
+			<table>
+				<tr>
+					<td>Student ID:</td>
+					<td><select th:field="*{status}">
+							<option th:each="status:${students}" th:value="${status}"
+								th:text="${status}">StudentID</option>
+					</select></td>
+				</tr>
+ 				<tr>
+					<td>CourseID:</td>
+					<td><select id = "couseid" th:onchange = "'javascript:checkField()'" th:field="*{grade}">
+							<option th:each="grade:${courses}" th:value="${grade}"
+								th:text="${grade}">CourseID</option>
+					</select>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>Enrollment Date:</td>
+					<td><input type="text"/></td>
+				</tr>
+ 				<tr>
+					<td>Status</td>
+					<td><input type="text" value="Active" readonly="readonly" /></td>
+				</tr>
+				<tr>
+ 					<td><input type="submit" value="Enroll" /></td>
+				</tr>
+			</table>
+ 		</form>
+	</div>
+</body>
+ <script type="text/javascript">
+        function checkField() {
+           var index = document.getElementById("courseid").selectdIndex;
+           var text = document.getElementById("none").options[index].value;
+           var label = document.getElementById("prompt");
+           label.innerText = index;
+        }    
+ </script>
+</html> 

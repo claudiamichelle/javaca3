@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Manage Enrollment</title>
+<link rel="stylesheet" th:href="@{/css/custom.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <h1 align="center">Manage Enrollment</h1>
+    <form action ="#"  method="post">
+	<table id="t02" cellpadding="2" >
+		<tr>
+			<td>StudentID:<input type = "text" /></td>
+			<td><input type="submit" value="Search" /></td>
+			<td><a  href="/editEnrollment">New Enrollment</a></td>					
+		</tr>
+	</table>
+	</form>
+	<table>	
+	</table>
+	<form:form>
+		<table id="t01" border="2" width="70%" cellpadding="2">
+			<tr>
+				<th>EnrollmentID</th>
+				<th>EnrollmentDate</th>
+				<th>Status</th>
+				<th>Course ID</th>
+				<th>Course Name</th>
+				<th>Student ID</th>
+				<th>Student Name</th>
+				<th>Option</th>
+			</tr>
+			<tr th:each="studentcourse : ${list}">
+				<td th:text="${studentcourse.EnrollmentID}"></td>
+				<td th:text="${studentcourse.EnrollmentDate}"></td>
+				<td th:text="${studentcourse.Status}"></td>		
+				<td th:text="${studentcourse.course}"></td>
+				<td th:text = "${studentcourse.getCourseName()}"></td>
+				<td th:text="${studentcourse.user}"></td>	
+                <td th:text = "${studentcourse.getUserName()}"></td>
+				<td><a th:href="@{'/disactivate/'+${studentcourse.EnrollmentID}}">DisActivate</a></td>  				  
+			</tr>
+		</table>
+		
+		<br/>
+	</form:form>
+</body>
+</html> 

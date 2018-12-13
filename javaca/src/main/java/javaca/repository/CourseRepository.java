@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import javaca.model.Course;
 import javaca.model.LecturerCourse;
 
-public interface CourseRepository  extends JpaRepository<Course, Integer> {
+public interface CourseRepository extends JpaRepository<Course, Integer> {
 
 	@Query("SELECT c from Course c WHERE c.status = 'A'")
 	List<Course> getActiveCourseforStudent();

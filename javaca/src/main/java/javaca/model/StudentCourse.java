@@ -58,11 +58,11 @@ public class StudentCourse implements Serializable {
 		this.enrollmentID = enrollmentID;
 	}
 
-	public Date getEnrollmentDate() {
+	public String getEnrollmentDate() {
 		return this.enrollmentdate;
 	}
 
-	public void setEnrollmentDate(Date enrollmentDate) {
+	public void setEnrollmentDate(String enrollmentDate) {
 		this.enrollmentdate = enrollmentDate;
 	}
 

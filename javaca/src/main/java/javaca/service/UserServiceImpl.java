@@ -40,4 +40,15 @@ public class UserServiceImpl implements UserService {
 	public List<User> showalllectures() {
 		return userRepository.showalllectures();
 	}
+	
+	@Override
+	@Transactional
+	public User findOne(int uid) {
+		return userRepository.findOne(uid);
+	}
+
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -62,8 +62,7 @@ public class AdminManageCourseController {
 		course.setTitle(p.getTitle());
 		course.setCapacity(p.getCapacity());
 		course.setStartDate(p.getStartDate());
-		course.setEndDate(Calendar.getInstance().getTime());
-		course.setModularCredit(p.getModularCredit());
+		course.setEndDate(p.getEndDate());
 		course.setStatus(p.getStatus());
 		
 		courseService.save(course);
@@ -77,7 +76,7 @@ public class AdminManageCourseController {
 		return "manage-addCourse";
 	}
 	
-	@RequestMapping(value="/save",method=RequestMethod.POST)
+	@RequestMapping(value="/saveaddcourse",method=RequestMethod.POST)
 	public String saveRegistration(@Valid Course course,BindingResult result,ModelMap model,RedirectAttributes redirectAttributes) {
 	
 		long CurrentNoOfCourses = courseService.countTotalCourses();

@@ -86,11 +86,11 @@ public class User implements Serializable {
 		this.address = address;
 	}
 
-	public String getContact() {
+	public int getContact() {
 		return this.contact;
 	}
 
-	public void setContact(String contact) {
+	public void setContact(int contact) {
 		this.contact = contact;
 	}
 

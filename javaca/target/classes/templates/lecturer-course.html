@@ -16,6 +16,7 @@
 				<th>Teaching ID</th>
 				<th>Status</th>
 				<th>Course ID</th>
+			
 				<th></th>
 			</tr>
 
@@ -23,6 +24,8 @@
 			<tr th:each="lecturercourse : ${list}">
 				<td th:text="${lecturercourse.teachingID}"></td>
 				<td th:text="${lecturercourse.status}"></td>	
+				<td th:text="${lecturercourse.Course}"></td>		
+			
 				<td><a th:href="@{'/course-enrollment/' + ${lecturercourse.course}}" th:text="${lecturercourse.course}"  ></a></td>  	
 				<td><a th:href="@{'/course-enrollment/' + ${lecturercourse.course}}">View Course Enrollment</a></td>  	
 				  

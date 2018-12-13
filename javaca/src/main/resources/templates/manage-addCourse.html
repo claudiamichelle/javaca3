@@ -10,7 +10,7 @@
 		<div>
  	<h1>Add Course Form</h1>
  	
-	     <form action="#" th:action="@{/save}" th:object="${course}" method="post">
+	     <form action="#" th:action="@{/saveaddcourse}" th:object="${course}" method="post">
 	     
 	     <table>
 	     <tr>
@@ -51,6 +51,7 @@
 		<td>	</td>
 		<td >
 	              <input type="submit" value="Enroll"/> 
+	              <input onclick='javascript:window.history.back()' value='Back' type='button'/>
 	              
 	            </td>
 	        </tr>
