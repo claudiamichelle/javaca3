@@ -20,7 +20,7 @@ public class User implements Serializable {
 
 	private String address;
 
-	private String contact;
+	private int contact;
 
 	private String email;
 

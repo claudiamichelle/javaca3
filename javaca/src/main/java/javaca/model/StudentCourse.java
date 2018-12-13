@@ -18,8 +18,7 @@ public class StudentCourse implements Serializable {
 	@Id
 	private int enrollmentID;
 
-	@Temporal(TemporalType.DATE)
-	private Date enrollmentdate;
+	private String enrollmentdate;
 
 	private String grade;
 

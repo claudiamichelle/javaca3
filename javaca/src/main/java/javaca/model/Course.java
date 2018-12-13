@@ -21,11 +21,9 @@ public class Course implements Serializable {
 
 	private int capacity;
 
-	@Temporal(TemporalType.DATE)
-	private Date enddate;
+	private String enddate;
 
-	@Temporal(TemporalType.DATE)
-	private Date startdate;
+	private String startdate;
 
 	private String status;
 
@@ -70,19 +68,19 @@ public class Course implements Serializable {
 		this.capacity = capacity;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return this.enddate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.enddate = endDate;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return this.startdate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startdate = startDate;
 	}
 
