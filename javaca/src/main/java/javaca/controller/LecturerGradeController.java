@@ -28,15 +28,6 @@ public class LecturerGradeController {
 		return "grade-student";
 	}
 
-//	@ModelAttribute("grades")
-//	public ArrayList<String> chooseGrades(){
-//		ArrayList<String> grades = new ArrayList<String>();
-//		grades.add("A");
-//		grades.add("B");
-//		grades.add("C");
-//		return grades;
-//	}
-//	
 	@RequestMapping(value = "/savegrade", method=RequestMethod.POST)
 	public ModelAndView editsave(@ModelAttribute("studentcourse") StudentCourse p) {
 		

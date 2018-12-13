@@ -3,6 +3,7 @@ package javaca.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -22,5 +23,15 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse, In
 
 	@Query("SELECT s FROM StudentCourse s WHERE s.enrollmentID = :eid")
 	StudentCourse findStudentCourseByEnrollmentId(@Param("eid") int eid);
+	
+	@Query("SELECT s.grade FROM StudentCourse s WHERE s.user.userID = :uid")
+	List<String> listStudentGrades(@Param("uid") int uid);
 
+	@Query("SELECT s FROM StudentCourse s WHERE s.user.userID = :uid AND s.status = 'Active'")
+	List<StudentCourse> showStudentCurrentCourses(@Param("uid") int uid);
+	
+	@Modifying
+	@Query("UPDATE StudentCourse s SET s.status = 'Inactive' WHERE enrollmentID = :eid")
+	void dropCourse(@Param("eid") int eid);
+	
 }
