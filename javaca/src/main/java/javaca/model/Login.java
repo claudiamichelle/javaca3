@@ -19,7 +19,7 @@ public class Login implements Serializable {
 
 	private String password;
 
-	private String status;
+	private boolean status;
 
 	//bi-directional many-to-one association to UserRole
 	@ManyToOne
@@ -30,9 +30,6 @@ public class Login implements Serializable {
 	@OneToOne
 	@JoinColumn(name="Email")
 	private User user; //should reference to email not userid
-
-	public Login() {
-	}
 
 	public String getLoginID() {
 		return loginID;
@@ -50,13 +47,13 @@ public class Login implements Serializable {
 		this.password = password;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	public boolean isActive() {
+        return status;
+    }
+ 
+    public void setActive(boolean active) {
+        this.status = active;
+    }
 
 	public UserRole getUserrole() {
 		return this.userrole;

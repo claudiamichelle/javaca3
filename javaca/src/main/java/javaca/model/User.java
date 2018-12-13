@@ -163,5 +163,14 @@ public class User implements Serializable {
 	public void setUserrole(UserRole userrole) {
 		this.userrole = userrole;
 	}
+	
+	public boolean isActive() {
+		// TODO Auto-generated method stub
+		
+		if (this.getStatus().equals("Active")) {
+			return true;	
+		}
+		else return false;
+	}
 
 }
