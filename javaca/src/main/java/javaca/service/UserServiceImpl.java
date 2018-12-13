@@ -33,24 +33,21 @@ public class UserServiceImpl implements UserService {
 	public User save(User user) {
 		return userRepository.save(user);
 	}
-
-	public List<User> showalllectures() {
-		return userRepository.showalllectures();
-	}
 	
 	@Override
 	@Transactional
 	public User findOne(int uid) {
 		return userRepository.findOne(uid);
 	}
-
-	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	@Transactional
 	public List<User> showalllectures() {
 		return userRepository.showalllectures();
+	}
+	
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return userRepository.findAll();
+	}
 }

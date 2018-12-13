@@ -12,7 +12,8 @@
 		<tr>
 			<td>StudentID:<input type = "text" /></td>
 			<td><input type="submit" value="Search" /></td>
-			<td><a  href="/editEnrollment">New Enrollment</a></td>					
+			<td><a  href="/editEnrollment">New Admin Enrollment</a></td>	
+			<td><input onclick='javascript:window.history.back()' value='Back' type='button'/></td>				
 		</tr>
 	</table>
 	</form>
@@ -41,6 +42,8 @@
 				<td><a th:href="@{'/disactivate/'+${studentcourse.EnrollmentID}}">DisActivate</a></td>  				  
 			</tr>
 		</table>
+		
+		
 		
 		<br/>
 	</form:form>

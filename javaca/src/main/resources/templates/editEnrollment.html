@@ -31,14 +31,16 @@
 				</tr>
 				<tr>
 					<td>Enrollment Date:</td>
-					<td><input type="text"/></td>
+					<td><input type="text" th:field="*{enrollmentDate}"/> (yyyy-mm-dd)</td>
 				</tr>
  				<tr>
 					<td>Status</td>
 					<td><input type="text" value="Active" readonly="readonly" /></td>
 				</tr>
 				<tr>
- 					<td><input type="submit" value="Enroll" /></td>
+ 					
+ 					<td><input onclick='javascript:window.history.back()' value='Back' type='button'/> <input type="submit" value="Enroll" /></td>
+ 					
 				</tr>
 			</table>
  		</form>

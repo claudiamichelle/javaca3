@@ -34,7 +34,13 @@ public class StudentCourse implements Serializable {
 	@JoinColumn(name="userID")
 	private User user;
 
+	public String getUserName() {
+		return user.getFirstName()+" "+user.getLastName();
+	}
 	
+	public String getCourseName() {
+		return course.getTitle();
+	}
 	
 	
 	

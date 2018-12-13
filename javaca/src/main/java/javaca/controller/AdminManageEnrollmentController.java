@@ -41,14 +41,6 @@ public class AdminManageEnrollmentController {
 		return mav;
 	}
 
-	/*
-	 * @RequestMapping(value = "/adminEnrollment/search/{userID}",method =
-	 * RequestMethod.GET) public ModelAndView getID(@PathVariable int userID) {
-	 * 
-	 * int rid = userID; List<StudentCourse> sclist =
-	 * scService.findActiveEnrollmentByStuID(rid); ModelAndView mav = new
-	 * ModelAndView("adminEnrollment"); mav.addObject("list",sclist); return mav; }
-	 */
 	@RequestMapping(value = "/search")
 	public String getResult(Model model, @ModelAttribute("sc") StudentCourse sc, BindingResult re) {
 		List<StudentCourse> sclist = scService.findActiveEnrollmentByStuID(Integer.parseInt(sc.getStatus()));
@@ -61,7 +53,6 @@ public class AdminManageEnrollmentController {
 		StudentCourse sc = scService.findEnrollmentByID(enrollmentID);
 		sc.setStatus("Inactive");
 		scService.save(sc);
-		scService.delete(sc);
 		return new ModelAndView("redirect:/adminEnrollment");
 	}
 
