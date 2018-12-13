@@ -57,26 +57,26 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	public List<StudentCourse> showStudentGrades(int uid) {
 		return studentCourseRepository.showAllStudentsGradeByUserID(uid);
 	}
-	
+
 	@Override
 	@Transactional
 	public List<String> listStudentGrades(int uid) {
 		return studentCourseRepository.listStudentGrades(uid);
 	}
-	
+
 	@Override
 	@Transactional
-	public List<StudentCourse> showStudentCurrentCourse(int uid){
+	public List<StudentCourse> showStudentCurrentCourse(int uid) {
 		return studentCourseRepository.showStudentCurrentCourses(uid);
 	}
-	
+
 	@Override
 	@Transactional
 	public void dropCourse(int eid) {
 		studentCourseRepository.dropCourse(eid);
-		return; 
+		return;
 	}
-	
+
 	@Override
 	@Transactional
 	public double calculateCGPA(int uid) {
@@ -123,15 +123,45 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 				grade = 0.00;
 				count++;
 			}
-			
+
 			sum = sum + grade;
 		}
-	double cgpa = sum/count;
-	return cgpa;
-}
+		double cgpa = sum / count;
+		return cgpa;
+	}
 
+	@Override
+	@Transactional
+	public List<StudentCourse> findActiveEnrollment() {
+		return studentCourseRepository.findActiveEnrollment();
+	}
 
-
-
+	@Override
+	@Transactional
+	public StudentCourse save(StudentCourse sc) {
+		return studentCourseRepository.save(sc);
+	}
+	
+	@Override
+	@Transactional
+    public StudentCourse findEnrollmentByID(int id){
+		return studentCourseRepository.findEnrollmentByID(id);
+	}	
+	
+	@Override
+	@Transactional
+    public List<StudentCourse> findActiveEnrollmentByStuID(int id){
+		return studentCourseRepository.findActiveEnrollmentByStuID(id);
+	}	
+	@Override
+	@Transactional
+    public List<StudentCourse> findEnrollmentByStuID(int id){
+		return studentCourseRepository.findEnrollmentByStuID(id);
+	}	
+	@Override
+	@Transactional
+	public void delete(StudentCourse sc) {
+		studentCourseRepository.delete(sc);
+	}
 
 }

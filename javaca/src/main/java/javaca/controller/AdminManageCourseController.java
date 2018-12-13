@@ -77,7 +77,7 @@ public class AdminManageCourseController {
 		return "manage-addCourse";
 	}
 	
-	@RequestMapping(value="/save",method=RequestMethod.POST)
+	@RequestMapping(value="/saveaddcourse",method=RequestMethod.POST)
 	public String saveRegistration(@Valid Course course,BindingResult result,ModelMap model,RedirectAttributes redirectAttributes) {
 	
 		long CurrentNoOfCourses = courseService.countTotalCourses();

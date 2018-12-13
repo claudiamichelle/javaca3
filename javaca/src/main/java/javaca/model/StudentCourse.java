@@ -1,17 +1,17 @@
 package javaca.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import javax.persistence.*;
 import java.util.Date;
-
 
 /**
  * The persistent class for the studentcourse database table.
  * 
  */
 @Entity
-@Table(name="studentcourse")
-@NamedQuery(name="StudentCourse.findAll", query="SELECT s FROM StudentCourse s")
+@Table(name = "studentcourse")
+@NamedQuery(name = "StudentCourse.findAll", query = "SELECT s FROM StudentCourse s")
 public class StudentCourse implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,14 +25,14 @@ public class StudentCourse implements Serializable {
 
 	private String status;
 
-	//bi-directional many-to-one association to Course
+	// bi-directional many-to-one association to Course
 	@ManyToOne
-	@JoinColumn(name="CourseID")
+	@JoinColumn(name = "CourseID")
 	private Course course;
 
-	//bi-directional many-to-one association to User
+	// bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumn(name="UserID")
+	@JoinColumn(name = "UserID")
 	private User user;
 
 	public StudentCourse() {
@@ -82,8 +82,20 @@ public class StudentCourse implements Serializable {
 		return this.user.getUserID();
 	}
 
+	public String getUserName() {
+		return user.getFirstName() + " " + user.getLastName();
+	}
+
+	public String getCourseName() {
+		return course.getTitle();
+	}
+	// testing if it can get the student or course name.
+
 	public void setUser(User user) {
 		this.user = user;
 	}
 
+	public void setUserID(int uid) {
+		this.user.setUserID(uid);
+	}
 }

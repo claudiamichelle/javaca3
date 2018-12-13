@@ -15,7 +15,7 @@ public interface StudentCourseService {
 	List<StudentCourse> showCourseEnrollment(String cid);
 
 	StudentCourse findOne(int eid);
-	
+
 	StudentCourse saveGrade(StudentCourse sc);
 
 	List<StudentCourse> showStudentGrades(int uid);
@@ -28,5 +28,16 @@ public interface StudentCourseService {
 
 	void dropCourse(int eid);
 
+	List<StudentCourse> findActiveEnrollment();//
+
+	List<StudentCourse> findEnrollmentByStuID(int id);
+
+	List<StudentCourse> findActiveEnrollmentByStuID(int id);//
+
+	StudentCourse findEnrollmentByID(int id);//
+
+	StudentCourse save(StudentCourse sc);//
+
+	void delete(StudentCourse sc);//
 
 }

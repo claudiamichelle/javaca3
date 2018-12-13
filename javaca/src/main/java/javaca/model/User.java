@@ -4,14 +4,13 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name="users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@Table(name = "users")
+@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,11 +21,13 @@ public class User implements Serializable {
 
 	private String contact;
 
-	   private String email;
-	 	public String getEmail() {
+	private String email;
+
+	public String getEmail() {
 		return email;
 	}
-	 public void setEmail(String email) {
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -36,24 +37,28 @@ public class User implements Serializable {
 
 	private String status;
 
-	//bi-directional many-to-one association to LecturerCourse
-	@OneToMany(mappedBy="user")
+	// bi-directional many-to-one association to LecturerCourse
+	@OneToMany(mappedBy = "user")
 	private List<LecturerCourse> lecturercourses;
 
-	//bi-directional one-to-one association to Login
-	@OneToOne(mappedBy="user")
+	// bi-directional one-to-one association to Login
+	@OneToOne(mappedBy = "user")
 	private Login login;
 
-	//bi-directional many-to-one association to StudentCourse
-	@OneToMany(mappedBy="user")
+	// bi-directional many-to-one association to StudentCourse
+	@OneToMany(mappedBy = "user")
 	private List<StudentCourse> studentcourses;
 
-	//bi-directional many-to-one association to UserRole
+	// bi-directional many-to-one association to UserRole
 	@ManyToOne
-	@JoinColumn(name="RoleID")
+	@JoinColumn(name = "RoleID")
 	private UserRole userrole;
 
 	public User() {
+	}
+
+	public User(int uid) {
+		this.userID = uid;
 	}
 
 	public int getUserID() {
@@ -163,14 +168,14 @@ public class User implements Serializable {
 	public void setUserrole(UserRole userrole) {
 		this.userrole = userrole;
 	}
-	
+
 	public boolean isActive() {
 		// TODO Auto-generated method stub
-		
+
 		if (this.getStatus().equals("Active")) {
-			return true;	
-		}
-		else return false;
+			return true;
+		} else
+			return false;
 	}
 
 }
