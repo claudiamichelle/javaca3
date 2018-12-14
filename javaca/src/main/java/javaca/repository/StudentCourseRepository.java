@@ -49,6 +49,6 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse, In
 	StudentCourse findEnrollmentByID(@Param("eid") int eid);
 	
 	// get number of times the current course has been enrolled
-		@Query("SELECT Count(sc) from StudentCourse as sc WHERE sc.course.courseID =:cid GROUP BY courseID")
-		int getTimesEnrolled(@Param("cid") String cid);
+	@Query("SELECT Count(sc) from StudentCourse as sc WHERE sc.course.courseID =:cid AND sc.Status = 'Active'")
+	int getTimesEnrolled(@Param("cid") String cid);
 }

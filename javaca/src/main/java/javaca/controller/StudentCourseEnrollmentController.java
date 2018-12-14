@@ -66,6 +66,7 @@ public class StudentCourseEnrollmentController {
 		return mav;
 	}
 
+//////////////////////////////////////////////////////////////////////////////
 
 @RequestMapping(value = "/course-enrolled/{cid}", method = RequestMethod.GET)
 	public ModelAndView enrollCourse(ModelMap model, @PathVariable String cid) {
@@ -91,6 +92,10 @@ public class StudentCourseEnrollmentController {
 			return new ModelAndView("redirect:/current-courses-enrolled/"+ useridstring);
 		}
 	}
+
+//////////////////////////////////////////////////////////////////////////////
+
+
 	@RequestMapping(value = "/current-courses-enrolled/{uid}", method = RequestMethod.GET)
 	public ModelAndView viewCurrentCoursesEnrolled(@PathVariable int uid) {
 		List<StudentCourse> sclist = scservice.showStudentCurrentCourse(uid);
