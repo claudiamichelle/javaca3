@@ -18,6 +18,8 @@ public interface UserService {
 	List<User> showalllectures();
 
 	List<User> findAll();
+	
+	List<User> findAllActiveUsers();
 
 	List<User> showActiveLecturersOnly();
 

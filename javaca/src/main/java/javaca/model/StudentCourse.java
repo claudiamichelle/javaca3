@@ -18,8 +18,6 @@ public class StudentCourse implements Serializable {
 	@Id
 	private int enrollmentID;
 
-	private String enrollmentdate;
-
 	private String grade;
 
 	private String status;
@@ -62,14 +60,6 @@ public class StudentCourse implements Serializable {
 
 	public void setEnrollmentID(int enrollmentID) {
 		this.enrollmentID = enrollmentID;
-	}
-
-	public String getEnrollmentDate() {
-		return this.enrollmentdate;
-	}
-
-	public void setEnrollmentDate(String enrollmentDate) {
-		this.enrollmentdate = enrollmentDate;
 	}
 
 	public String getGrade() {
