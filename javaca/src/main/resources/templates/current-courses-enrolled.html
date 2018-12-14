@@ -37,11 +37,7 @@
 				<td th:text="${studentcourse.enrollmentID}"></td>
 				<td th:text="${studentcourse.course}"></td>
 				<td th:text="${studentcourse.EnrollmentDate}"></td>
-				
-				<td><a
-					th:href="@{'/drop-course/' + ${studentcourse.enrollmentID}}">Drop
-						Course</a></td>
-				
+				<td><a th:href="@{'/disactivateStudentCourse/'+${studentcourse.enrollmentID}}">Drop Course</a></td>				
 			</tr>
 
 		</table>

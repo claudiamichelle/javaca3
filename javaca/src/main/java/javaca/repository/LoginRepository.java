@@ -12,5 +12,8 @@ import javaca.model.Login;
 public interface LoginRepository extends JpaRepository<Login, Integer>{
  	@Query("SELECT u FROM Login u WHERE u.loginID=:un AND u.password=:pwd")
 	Login findUserByNamePwd(@Param("un") String loginId, @Param("pwd") String password);
+ 	
+/* 	@Query("SELECT l FROM Login l WHERE l.loginID =:lid")
+ 	Login findUserByLoginID(@Param("lid") String lid);*/
 	  
 }

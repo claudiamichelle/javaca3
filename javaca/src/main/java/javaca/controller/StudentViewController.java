@@ -2,9 +2,10 @@ package javaca.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,10 +17,13 @@ import javaca.service.StudentCourseService;
 public class StudentViewController {
 	
 	@Autowired
-	StudentCourseService service;
+	StudentCourseService service;	
 	
-	@RequestMapping(value="student-grades/{uid}", method=RequestMethod.GET)
-	public ModelAndView getStudentGrades(@PathVariable int uid) {
+	@RequestMapping(value="student-grades", method=RequestMethod.GET)
+	public ModelAndView getStudentGrades(HttpSession session) {
+		UserSession us = (UserSession) session.getAttribute("USERSESSION");
+		int uid = us.getUser().getUserID();
+		
 		List<StudentCourse> list = service.showStudentGrades(uid);
 		double cgpa = service.calculateCGPA(uid);
 		ModelAndView mav = new ModelAndView("student-grades");
@@ -27,4 +31,5 @@ public class StudentViewController {
 		mav.addObject("cgpa", cgpa);
 		return mav;
 	}
+	
 }

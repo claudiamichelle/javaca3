@@ -1,5 +1,6 @@
 package javaca.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javaca.model.Login;
+import javaca.model.User;
 import javaca.service.LoginService;
+import javaca.service.UserService;
 
 @Controller
 public class LoginController {
 	@Autowired
 	LoginService loginService;
+	
+	@Autowired
+	UserService uService;
 
 	@RequestMapping("/403")
 	public String accessDenied() {
@@ -37,13 +43,15 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ModelAndView authenticate(@ModelAttribute("loginuser") Login L, BindingResult result) {
+	public ModelAndView authenticate(@ModelAttribute("loginuser") Login L, BindingResult result, HttpSession session) {
 
 		ModelAndView mav = new ModelAndView("login");
 
 		if (result.hasErrors())
 
 			return new ModelAndView("login");
+		UserSession us = new UserSession();
+		
 		if (L.getLoginID() != null && L.getPassword() != null) {
 			Login u = loginService.authenticate(L.getLoginID(), L.getPassword());
 			if (u == null) {
@@ -51,14 +59,18 @@ public class LoginController {
 			}
 
 			if (u.isActive()) {
+				User user = uService.findUserByLoginID(u.getLoginID());
+				us.setUser(user);
+				us.setSessionId(session.getId());
+				session.setAttribute("USERSESSION", us);
+				
 				if (u.getUserrole().getRoleID() == 1) {
 					mav = new ModelAndView("redirect:/adminView");
-					// mav.addObject("modelAttribute" , new ModelAttribute());
 				}
 
 				else if (u.getUserrole().getRoleID() == 2) {
 
-					mav = new ModelAndView("redirect:/lecturerView");
+					mav = new ModelAndView("redirect:/lecturer-course");
 				}
 
 				else if (u.getUserrole().getRoleID() == 3) {
@@ -72,12 +84,9 @@ public class LoginController {
 		}
 		return new ModelAndView("redirect:/login");
 	}
-
-	// Student View
+	
 	@RequestMapping({ "/studentView" })
-	public String listProductHandler(Model model, //
-			@RequestParam(value = "name", defaultValue = "") String likeName) {
-		return "studentView";
+	public void studentView() {
 	}
 
 	@RequestMapping({ "/adminView" })

@@ -62,4 +62,12 @@ public class UserServiceImpl implements UserService {
 	public List<User> showActiveStudentsOnly() {
 		return userRepository.showActiveStudentsOnly();
 	}
+	
+	@Override
+	@Transactional
+	public User findUserByLoginID(String email) {
+		return userRepository.findUserByLoginID(email);
+	}
+	
+	
 }

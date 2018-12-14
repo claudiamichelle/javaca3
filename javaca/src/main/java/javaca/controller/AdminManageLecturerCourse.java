@@ -29,7 +29,7 @@ public class AdminManageLecturerCourse {
 	@Autowired
 	private UserService uService;
 	
-	static private String passLecturerID;
+	static private String passCourseID;
 	
 	@RequestMapping(value = "/ViewLecturerCourse")
 	public ModelAndView getAll() {
@@ -47,22 +47,22 @@ public class AdminManageLecturerCourse {
 		return mav;
 	}
  	@RequestMapping(value = "/EnrollLecturerCourse/{cid}", method = RequestMethod.GET)
-	public String gradeStudent(@PathVariable String cid, ModelMap model) {
-		Course course = cService.findOneCourse(cid);
+	public String gradeStudent(@PathVariable String cid, ModelMap model, HttpSession session) {
+ 		Course course = cService.findOneCourse(cid);
 		model.addAttribute("course", course);
-		passLecturerID = cid;
+		passCourseID = cid;
 		return "EnrollLecturerCourse";
 	}
 	
 	@RequestMapping(value="/saveLC",method =RequestMethod.POST)
-	public String saveRegistration(@Valid LecturerCourse lc,BindingResult result,ModelMap model,RedirectAttributes ra,HttpSession session) {
+	public String saveRegistration(@Valid LecturerCourse lc,BindingResult result,ModelMap model,RedirectAttributes ra) {		
 		if(result.hasErrors()) {
 			return "EnrollLecturerCourse";
 		}
  		int uid = Integer.parseInt(lc.getStatus());
 		lc.setUser(uService.findOne(uid));
 		lc.setStatus("Active");
- 		lc.setCourse(cService.findOneCourse(passLecturerID));
+ 		lc.setCourse(cService.findOneCourse(passCourseID));
 		
 		lcService.save(lc);
 		return "redirect:/ViewLecturerCourse";

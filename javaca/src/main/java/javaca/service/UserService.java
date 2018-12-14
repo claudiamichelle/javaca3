@@ -22,4 +22,6 @@ public interface UserService {
 	List<User> showActiveLecturersOnly();
 
 	List<User> showActiveStudentsOnly();
+
+	User findUserByLoginID(String email);
 }

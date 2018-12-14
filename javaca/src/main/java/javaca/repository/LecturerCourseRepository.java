@@ -13,6 +13,9 @@ public interface LecturerCourseRepository extends JpaRepository<LecturerCourse, 
 	@Query("SELECT s from LecturerCourse s WHERE s.status ='Active'")
 	List<LecturerCourse> getActiveCourses();
 	
+	@Query("SELECT s from LecturerCourse s WHERE s.status ='Active' AND s.user.userID=:uid")
+	List<LecturerCourse> getActiveCoursesByLecturerID(@Param("uid") int uid);
+	
 	@Query("SELECT s FROM LecturerCourse s WHERE s.course.courseID = :cid") 
 	List<LecturerCourse> showListOfLecturerCoursesByCourseID(@Param("cid") String cid);
 	

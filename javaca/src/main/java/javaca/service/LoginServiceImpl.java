@@ -17,5 +17,11 @@ public class LoginServiceImpl implements LoginService {
 		Login u = loginRepository.findUserByNamePwd(uname, pwd);
 		return u;
 	}
+	
+/*	@Override
+	@Transactional
+	public Login findUserByLoginID(String lid) {
+		return loginRepository.findUserByLoginID(lid);
+	}*/
 
 }

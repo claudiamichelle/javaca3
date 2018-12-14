@@ -44,4 +44,12 @@ public class LecturerCourseServiceImpl implements LecturerCourseService {
 	public List<LecturerCourse> showListOfLecturerCoursesByUserID(int uid) {
 		return lecturerCourseRepository.showListOfLecturerCoursesByUserID(uid);
 	}
+	
+	@Override
+	@Transactional
+	public List<LecturerCourse> getActiveCoursesByLecturerID(int uid) {
+		return lecturerCourseRepository.getActiveCoursesByLecturerID(uid);
+	}
+	
+	
 }

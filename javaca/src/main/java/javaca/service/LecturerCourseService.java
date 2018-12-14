@@ -11,4 +11,5 @@ public interface LecturerCourseService {
 	LecturerCourse save(LecturerCourse lc);
 	List<LecturerCourse> showListOfLecturerCoursesByCourseID(String cid);
 	List<LecturerCourse> showListOfLecturerCoursesByUserID(int uid);
+	List<LecturerCourse> getActiveCoursesByLecturerID(int uid);
 }

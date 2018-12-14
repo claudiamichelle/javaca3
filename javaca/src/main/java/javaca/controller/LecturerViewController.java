@@ -2,6 +2,8 @@ package javaca.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,9 +25,10 @@ public class LecturerViewController {
 
 	
 	@RequestMapping(value = "/lecturer-course", method = RequestMethod.GET)
-	public ModelAndView getAll() {
-
-		List<LecturerCourse> list = lservice.getActiveCourses();
+	public ModelAndView getAll(HttpSession session) {
+		UserSession us = (UserSession) session.getAttribute("USERSESSION");
+		int uid = us.getUser().getUserID();
+		List<LecturerCourse> list = lservice.getActiveCoursesByLecturerID(uid);
 		ModelAndView mav = new ModelAndView("lecturer-course");
 		mav.addObject("list", list);
 		return mav;

@@ -3,6 +3,7 @@ package javaca.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,10 @@ public class StudentCourseEnrollmentController {
 	static int userid;
 	static String courseid;
 	
-	@RequestMapping(value = "/view-courses/{uid}", method = RequestMethod.GET)
-	public ModelAndView viewCourse(@PathVariable int uid) {
+	@RequestMapping(value = "/view-courses", method = RequestMethod.GET)
+	public ModelAndView viewCourse(HttpSession session) {
+		UserSession us = (UserSession) session.getAttribute("USERSESSION");
+		int uid = us.getUser().getUserID();
 		List<Course> clist = service.getActiveCourseforStudent();
 		List<StudentCourse> sclist = scservice.findActiveEnrollment();
 		List<Course> list = new ArrayList<Course>();
@@ -54,11 +57,8 @@ public class StudentCourseEnrollmentController {
 				}
 			}
 		}
-		
-		
 		ModelAndView mav = new ModelAndView("view-courses");
-		mav.addObject("list", list);
-		
+		mav.addObject("list", list);		
 		return mav;
 	}
 	
@@ -87,20 +87,23 @@ public class StudentCourseEnrollmentController {
 	}
 	
 	
-	@RequestMapping(value = "/current-courses-enrolled/{uid}", method = RequestMethod.GET)
-	public ModelAndView viewCurrentCoursesEnrolled(@PathVariable int uid) {
+	@RequestMapping(value = "/current-courses-enrolled", method = RequestMethod.GET)
+	public ModelAndView viewCurrentCoursesEnrolled(HttpSession session) {
+		UserSession us = (UserSession) session.getAttribute("USERSESSION");
+		int uid = us.getUser().getUserID();
 		List<StudentCourse> sclist = scservice.showStudentCurrentCourse(uid);
 		ModelAndView mav = new ModelAndView("current-courses-enrolled");
 		mav.addObject("sclist", sclist);
 		return mav;
 	}
 	
-	
-	@RequestMapping(value="/drop-course/{eid}", method = RequestMethod.GET)
-	public ModelAndView dropCourse(@PathVariable int eid) {
+	@RequestMapping(value = "/disactivateStudentCourse/{eid}",method = RequestMethod.GET)
+	public ModelAndView disactivate(@PathVariable int eid) {
 		StudentCourse studentcourse = scservice.findOne(eid);
-		scservice.dropCourse(eid);
-		return new ModelAndView("redirect:/current-courses-enrolled/" + studentcourse.getUser());
+		studentcourse.setStatus("Inactive");
+		scservice.save(studentcourse);
+		
+		return new ModelAndView("redirect:/current-courses-enrolled");
 	}
 	
 	

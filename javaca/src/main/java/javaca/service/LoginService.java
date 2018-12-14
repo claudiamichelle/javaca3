@@ -9,4 +9,6 @@ public interface LoginService {
 
 	Login authenticate(String uname, String pwd);
 
+/*	Login findUserByLoginID(String lid);*/
+
 }
