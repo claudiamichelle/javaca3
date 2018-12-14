@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javaca.exception.CourseIsFullException;
 import javaca.model.Course;
 import javaca.model.LecturerCourse;
 import javaca.model.StudentCourse;
@@ -74,22 +75,31 @@ public class StudentCourseEnrollmentController {
 		courseid = cid;
 		Course c = cservice.findOneCourse(cid);
 		
-		if (scservice.getTimesEnrolled(cid) >= c.getCapacity()) {
-			return new ModelAndView("redirect:/CourseIsFull");	
+		try {
+			if (scservice.getTimesEnrolled(cid) >= c.getCapacity()) {
+				throw new CourseIsFullException();
+			}
+			else {
+				studentcourse.setCourse(c);
+				
+				User u = uservice.findOne(userid);
+				studentcourse.setUser(u);
+				
+				studentcourse.setStatus("Active");
+				
+				
+	//			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+	//			LocalDate localDate = LocalDate.now();
+	//			studentcourse.setEnrollmentDate(dtf.format(localDate));
+		 		scservice.save(studentcourse);
+				
+				model.addAttribute("studentcourse", studentcourse);
+				String useridstring = String.valueOf(userid);
+				return new ModelAndView("redirect:/current-courses-enrolled/"+ useridstring);
+			}
 		}
-		else {
-			studentcourse.setCourse(c);
-			
-			User u = uservice.findOne(userid);
-			studentcourse.setUser(u);
-			
-			studentcourse.setStatus("Active");
-			
-	 		scservice.save(studentcourse);
-			
-			model.addAttribute("studentcourse", studentcourse);
-			String useridstring = String.valueOf(userid);
-			return new ModelAndView("redirect:/current-courses-enrolled/"+ useridstring);
+		catch (CourseIsFullException e) {
+			return new ModelAndView("redirect:/CourseIsFull");
 		}
 	}
 
