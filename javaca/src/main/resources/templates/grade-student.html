@@ -11,6 +11,9 @@
 <body>
 
 <h1> Grade Student</h1>
+<a th:href="@{/}">Logout</a>
+<br><br>
+
 <form action = "/grade-student" th:action="@{/savegrade}" th:object="${studentcourse}" method="post">
 <input type ="hidden" th:field="*{enrollmentID}"/>
 
@@ -39,7 +42,8 @@
 <option th:value="'F'">F</option>
 </select>
 <br/>
-<input type ="submit"/>
+<input onclick='javascript:window.history.back()' value='Back' type='button'/><input type ="submit"/>
+
 
 </form>
 </body>

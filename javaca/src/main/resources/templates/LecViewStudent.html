@@ -11,18 +11,8 @@
 
 <body>
 	<h1 align="center">View Student's Grade</h1>
-	<table id="t02" cellpadding="2">
-		<tr>
-			<th><a href=""><h2>link to somewhere...</h2></a></th>
-			<th><a align="right" href="/lecturer-course"><h2>Back</h2></a></th>
-			
-			<th></th>
-		</tr>
-	</table>
-	<table>
-
-
-	</table>
+	<input onclick='javascript:window.history.back()' value='Back' type='button'/>
+	<a th:href="@{/}">Logout</a>
 
 	<form:form>
 		<table id="t01" border="2" width="70%" cellpadding="2">

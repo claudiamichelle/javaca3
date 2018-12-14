@@ -164,4 +164,9 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		studentCourseRepository.delete(sc);
 	}
 
+	@Override
+	@Transactional
+	public int getTimesEnrolled(String cid) {
+		return studentCourseRepository.getTimesEnrolled(cid);
+	}
 }

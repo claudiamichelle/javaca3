@@ -78,13 +78,21 @@ public class AdminManageEnrollmentController {
 		// sc.setEnrollmentDate(sgetEnrollmentDate());
 		// since I have trouble with dealing directly with foreign keys,so I just take
 		// good use of other variable.
+		List<StudentCourse> comparelist = scService.findActiveEnrollmentByStuID(uid);
+		for(StudentCourse sc1:comparelist) {
+			if(sc1.getCourse().equals(cid)) {
+				sc1.setStatus("Inactive");
+				scService.save(sc1);
+				break;
+			}
+		}
 		scService.save(sc);
 		return "redirect:/adminEnrollment";
 	}
 
 	@ModelAttribute("courses")
 	public List<String> initializeCourses() {
-		List<Course> clist = cService.findAll();
+		List<Course> clist = cService.getActiveCourseforStudent();
 		List<String> courses = new ArrayList<String>();
 		List<StudentCourse> sclist = scService.findAll();
 		for (Course c : clist) {
@@ -101,7 +109,7 @@ public class AdminManageEnrollmentController {
 
 	@ModelAttribute("students")
 	public List<Integer> initializeStudents() {
-		List<User> ulist = uService.findAll();
+		List<User> ulist = uService.findAllActiveUsers();
 		List<Integer> students = new ArrayList<Integer>();
 		for (User u : ulist) {
 			students.add(u.getUserID());

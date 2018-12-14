@@ -47,4 +47,8 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse, In
 	// to disactivate the selected enrollment
 	@Query("SELECT sc FROM StudentCourse as sc WHERE sc.enrollmentID = :eid")
 	StudentCourse findEnrollmentByID(@Param("eid") int eid);
+	
+	// get number of times the current course has been enrolled
+		@Query("SELECT Count(sc) from StudentCourse as sc WHERE sc.course.courseID =:cid GROUP BY courseID")
+		int getTimesEnrolled(@Param("cid") String cid);
 }

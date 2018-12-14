@@ -24,6 +24,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("SELECT u FROM User as u WHERE u.userID =:urid")
 	User findOne(@Param("urid") int urid);
 	
+	@Query("SELECT u FROM User as u WHERE u.status ='Active'")
+	List<User> findAllActiveUsers();
+	
 	@Query("SELECT a FROM User a WHERE a.userrole=2 AND a.status='Active'")
 	List<User> showActiveLecturersOnly();
 	

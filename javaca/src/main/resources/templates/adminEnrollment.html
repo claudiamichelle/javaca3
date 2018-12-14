@@ -7,23 +7,27 @@
 </head>
 <body>
     <h1 align="center">Manage Enrollment</h1>
-    <form action ="#"  method="post">
-	<table id="t02" cellpadding="2" >
-		<tr>
-			<td>StudentID:<input type = "text" /></td>
-			<td><input type="submit" value="Search" /></td>
-			<td><a  href="/editEnrollment">New Admin Enrollment</a></td>	
-			<td><input onclick='javascript:window.history.back()' value='Back' type='button'/></td>				
-		</tr>
-	</table>
-	</form>
-	<table>	
-	</table>
+    
+    <div class="topnav">
+  		<a href="/">Home</a>
+  		<a href="/Viewlectuers">View all Lecturers</a>
+ 	 	<a href="/Addlecture">Add New Lecturer </a>
+ 		<a href="/ViewStudents">View all Students</a>
+ 	 	<a href="/adduser">Add New Student </a>
+ 	 	<a class="active" href="/manage-viewCourse">View all Courses</a>
+ 	 	<a href="/manage-addCourse">Add New Course</a>
+ 	 	<a href="/editEnrollment">Assign Student to a course</a>
+ 	 	<a href="/adminEnrollment">Edit Student Enrollment</a>
+ 	 	<a href="/ListCourses">Assign Lecturer to a Course</a>
+ 	 	<a href="/ViewLecturerCourse">View Assigned Courses</a>
+	</div>
+	<br />
+	<br />
+    
 	<form:form>
 		<table id="t01" border="2" width="70%" cellpadding="2">
 			<tr>
 				<th>EnrollmentID</th>
-				<th>EnrollmentDate</th>
 				<th>Status</th>
 				<th>Course ID</th>
 				<th>Course Name</th>
@@ -33,7 +37,6 @@
 			</tr>
 			<tr th:each="studentcourse : ${list}">
 				<td th:text="${studentcourse.EnrollmentID}"></td>
-				<td th:text="${studentcourse.EnrollmentDate}"></td>
 				<td th:text="${studentcourse.Status}"></td>		
 				<td th:text="${studentcourse.course}"></td>
 				<td th:text = "${studentcourse.getCourseName()}"></td>

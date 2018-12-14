@@ -36,57 +36,61 @@ public class StudentCourseEnrollmentController {
 	@Autowired
 	UserService uservice;
 
-
 	static int userid;
 	static String courseid;
-	
+
 	@RequestMapping(value = "/view-courses/{uid}", method = RequestMethod.GET)
 	public ModelAndView viewCourse(@PathVariable int uid) {
 		List<Course> clist = service.getActiveCourseforStudent();
 		List<StudentCourse> sclist = scservice.findActiveEnrollment();
 		List<Course> list = new ArrayList<Course>();
-		userid=uid;
+		boolean flag;
+		userid = uid;
 		for (Course c : clist) {
+			flag = false;
 			for (StudentCourse sc : sclist) {
-				if (!c.getCourseID().equals(sc.getCourse())) {
-					list.add(c);
-					break;
+				if (c.getCourseID().equals(sc.getCourse())) {
+					if (sc.getUser() == uid) {
+						flag = true;
+						break;
+					}
 				}
 			}
+			if (!flag)
+				list.add(c);
 		}
-		
-		
+
 		ModelAndView mav = new ModelAndView("view-courses");
 		mav.addObject("list", list);
-		
+
 		return mav;
 	}
-	
-	@RequestMapping(value = "/course-enrolled/{cid}", method = RequestMethod.GET)
+
+
+@RequestMapping(value = "/course-enrolled/{cid}", method = RequestMethod.GET)
 	public ModelAndView enrollCourse(ModelMap model, @PathVariable String cid) {
 		StudentCourse studentcourse = new StudentCourse();
 		courseid = cid;
 		Course c = cservice.findOneCourse(cid);
-		studentcourse.setCourse(c);
 		
-		User u = uservice.findOne(userid);
-		studentcourse.setUser(u);
-		
-		studentcourse.setStatus("Active");
-		
-		
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd");
-//		LocalDate localDate = LocalDate.now();
-//		studentcourse.setEnrollmentDate(dtf.format(localDate));
- 		scservice.save(studentcourse);
-		
-		model.addAttribute("studentcourse", studentcourse);
-		String useridstring = String.valueOf(userid);
-		return new ModelAndView("redirect:/current-courses-enrolled/"+ useridstring);
-		
+		if (scservice.getTimesEnrolled(cid) >= c.getCapacity()) {
+			return new ModelAndView("redirect:/CourseIsFull");	
+		}
+		else {
+			studentcourse.setCourse(c);
+			
+			User u = uservice.findOne(userid);
+			studentcourse.setUser(u);
+			
+			studentcourse.setStatus("Active");
+			
+	 		scservice.save(studentcourse);
+			
+			model.addAttribute("studentcourse", studentcourse);
+			String useridstring = String.valueOf(userid);
+			return new ModelAndView("redirect:/current-courses-enrolled/"+ useridstring);
+		}
 	}
-	
-	
 	@RequestMapping(value = "/current-courses-enrolled/{uid}", method = RequestMethod.GET)
 	public ModelAndView viewCurrentCoursesEnrolled(@PathVariable int uid) {
 		List<StudentCourse> sclist = scservice.showStudentCurrentCourse(uid);
@@ -94,14 +98,12 @@ public class StudentCourseEnrollmentController {
 		mav.addObject("sclist", sclist);
 		return mav;
 	}
-	
-	
-	@RequestMapping(value="/drop-course/{eid}", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/drop-course/{eid}", method = RequestMethod.GET)
 	public ModelAndView dropCourse(@PathVariable int eid) {
 		StudentCourse studentcourse = scservice.findOne(eid);
 		scservice.dropCourse(eid);
 		return new ModelAndView("redirect:/current-courses-enrolled/" + studentcourse.getUser());
 	}
-	
-	
+
 }

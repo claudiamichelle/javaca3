@@ -39,5 +39,7 @@ public interface StudentCourseService {
 	StudentCourse save(StudentCourse sc);//
 
 	void delete(StudentCourse sc);//
+	
+	int getTimesEnrolled(String cid);
 
 }

@@ -53,6 +53,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional
+	public List<User> findAllActiveUsers(){
+		return userRepository.findAllActiveUsers();
+	}
+	
+	@Override
+	@Transactional
 	public List<User> showActiveLecturersOnly() {
 		return userRepository.showActiveLecturersOnly();
 	}
