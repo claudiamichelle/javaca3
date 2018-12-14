@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: javaca Maven Webapp
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: ClaudiaMP
+Built-By: Ronald Lim
 Implementation-Vendor-Id: sg.iss.team3
 Build-Jdk: 1.8.0_191
 Implementation-URL: http://maven.apache.org
